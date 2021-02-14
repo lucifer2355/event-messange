@@ -1,14 +1,17 @@
 {
   "name": "event-messenger",
+  "version": "1.0.0",
+  "main": "index.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cros": "^1.0.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.16"
+    "mongoose": "^5.11.16",
+    "nodemon": "^2.0.7"
   },
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "engines": {
+    "node": ">=10.0.0"
+  }
 }
