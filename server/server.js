@@ -19,7 +19,8 @@ mongoose
   })
   .then(() => {
     console.log("DB connection successfully");
-  });
+  })
+  .catch((error) => console.log("DB connection error", error.message));
 
 app.listen(process.env.PORT, () => {
   console.log(`app running on prot ${process.env.PORT}`);
