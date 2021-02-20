@@ -1,13 +1,21 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
+
+const AppError = require("./utils/appError");
+const userRouter = require("./routes/userRoutes");
 
 const app = express();
 
 //! MIDDLEWARE
 app.use(express.json());
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+//* Body parser, reading data from body into req.body
+app.use(express.json({ limit: "30mb" }));
 app.use(cors());
+
+//! ROUTES
+app.use("/api/users", userRouter);
+app.all("*", (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+});
 
 module.exports = app;
