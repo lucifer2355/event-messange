@@ -1,11 +1,9 @@
 import React from "react";
 
+import AuthPage from "./pages/AuthPage/AuthPage";
+
 const App = () => {
-  return (
-    <div className='container'>
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <AuthPage />;
 };
 
 export default App;

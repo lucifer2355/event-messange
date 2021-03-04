@@ -6,7 +6,16 @@ const AuthPage = () => {
     <div className='container'>
       <Container maxWidth='md'>
         <Card className='card'>
-          <CardContent className='card__content'></CardContent>
+          <CardContent className='card__content'>
+            <div className='card__header'>
+              <Typography variant='h4' align='center'>
+                Login
+              </Typography>
+              <Typography variant='h4' align='center'>
+                Register
+              </Typography>
+            </div>
+          </CardContent>
         </Card>
       </Container>
     </div>
