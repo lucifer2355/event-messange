@@ -1,4 +1,13 @@
-.auth__form {
-  width: 60%;
-  margin: 0 auto;
+.auth {
+  &__container {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  &__form {
+    &__login {
+      display: block;
+      width: 100%;
+    }
+  }
 }

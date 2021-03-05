@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import {
   Container,
   Typography,
-  Card,
-  CardContent,
   Tab,
   Paper,
   Tabs,
-  Box
+  Box,
+  TextField
 } from "@material-ui/core";
 
 interface TabPanelProps {
@@ -48,27 +47,44 @@ const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className='auth__form'>
-      <Paper square>
-        <Tabs
-          value={value}
-          indicatorColor='primary'
-          textColor='primary'
-          onChange={handleChange}
-          variant='fullWidth'
-          aria-label='auth form tabs'
-        >
-          <Tab label='Login' />
-          <Tab label='Register' />
-        </Tabs>
+    <div className='auth__container'>
+      <Container maxWidth='md'>
+        <Paper square>
+          <Tabs
+            value={value}
+            indicatorColor='primary'
+            textColor='primary'
+            onChange={handleChange}
+            variant='fullWidth'
+            aria-label='auth form tabs'
+          >
+            <Tab label='Login' />
+            <Tab label='Register' />
+          </Tabs>
 
-        <TabPanel value={value} index={0}>
-          Login
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Register
-        </TabPanel>
-      </Paper>
+          <form className='auth__form' noValidate autoComplete='off'>
+            <TabPanel value={value} index={0}>
+              <div className='auth__form__login'>
+                <TextField
+                  id='email'
+                  label='Email'
+                  variant='outlined'
+                  type='email'
+                />
+                <TextField
+                  id='password'
+                  label='Password'
+                  variant='outlined'
+                  type='password'
+                />
+              </div>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              Register
+            </TabPanel>
+          </form>
+        </Paper>
+      </Container>
     </div>
   );
 };
