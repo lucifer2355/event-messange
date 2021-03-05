@@ -1,20 +1,39 @@
-import React from "react";
-import { Container, Typography, Card, CardContent } from "@material-ui/core";
+import React, { useState } from "react";
+import {
+  Container,
+  Typography,
+  Card,
+  CardContent,
+  Tab,
+  Paper,
+  Tabs
+} from "@material-ui/core";
 
-const AuthPage = () => {
+const AuthPage: React.FC = () => {
+  const [value, setValue] = useState<number>(1);
+
+  const handleChange: any = (e: React.FormEvent, value: number) => {
+    e.preventDefault();
+    setValue(value);
+  };
+
   return (
     <div className='container'>
       <Container maxWidth='md'>
         <Card className='card'>
           <CardContent className='card__content'>
-            <div className='card__header'>
-              <Typography variant='h4' align='center'>
-                Login
-              </Typography>
-              <Typography variant='h4' align='center'>
-                Register
-              </Typography>
-            </div>
+            <Paper square>
+              <Tabs
+                value={value}
+                indicatorColor='primary'
+                textColor='primary'
+                onChange={handleChange}
+                aria-label='disabled tabs example'
+              >
+                <Tab label='Login' />
+                <Tab label='Register' />
+              </Tabs>
+            </Paper>
           </CardContent>
         </Card>
       </Container>

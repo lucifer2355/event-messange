@@ -2,7 +2,7 @@ import React from "react";
 
 import AuthPage from "./pages/AuthPage/AuthPage";
 
-const App = () => {
+const App: React.FC = () => {
   return <AuthPage />;
 };
 
