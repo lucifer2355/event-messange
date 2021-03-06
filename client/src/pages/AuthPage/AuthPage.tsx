@@ -6,7 +6,8 @@ import {
   Paper,
   Tabs,
   Box,
-  TextField
+  TextField,
+  Grid
 } from "@material-ui/core";
 
 interface TabPanelProps {
@@ -64,20 +65,22 @@ const AuthPage: React.FC = () => {
 
           <form className='auth__form' noValidate autoComplete='off'>
             <TabPanel value={value} index={0}>
-              <div className='auth__form__login'>
-                <TextField
-                  id='email'
-                  label='Email'
-                  variant='outlined'
-                  type='email'
-                />
-                <TextField
-                  id='password'
-                  label='Password'
-                  variant='outlined'
-                  type='password'
-                />
-              </div>
+              <Grid container spacing={1} justify='center'>
+                <Grid item xs={10} sm={6} md={4}>
+                  <TextField
+                    id='email'
+                    label='Email'
+                    variant='outlined'
+                    type='email'
+                  />
+                  <TextField
+                    id='password'
+                    label='Password'
+                    variant='outlined'
+                    type='password'
+                  />
+                </Grid>
+              </Grid>
             </TabPanel>
             <TabPanel value={value} index={1}>
               Register
