@@ -49,7 +49,7 @@ const AuthPage: React.FC = () => {
 
   return (
     <div className='auth__container'>
-      <Container maxWidth='md'>
+      <Container maxWidth='sm'>
         <Paper square>
           <Tabs
             value={value}
@@ -66,13 +66,15 @@ const AuthPage: React.FC = () => {
           <form className='form' noValidate autoComplete='off'>
             <TabPanel value={value} index={0}>
               <Grid container spacing={1} justify='center'>
-                <Grid item xs={12} sm={12} md={12} className='auth__grid'>
+                <Grid item xs={8} sm={8} md={8} className='auth__grid'>
                   <div className='form__textfield-div'>
                     <TextField
                       id='email'
                       label='Email'
                       variant='outlined'
                       type='email'
+                      InputProps={{ style: { fontSize: "1.5rem" } }}
+                      InputLabelProps={{ style: { fontSize: "1.5rem" } }}
                       className='form__textfield'
                     />
                   </div>
@@ -83,6 +85,8 @@ const AuthPage: React.FC = () => {
                       label='Password'
                       variant='outlined'
                       type='password'
+                      InputProps={{ style: { fontSize: "1.5rem" } }}
+                      InputLabelProps={{ style: { fontSize: "1.5rem" } }}
                       className='form__textfield'
                     />
                   </div>
