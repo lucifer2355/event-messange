@@ -63,22 +63,29 @@ const AuthPage: React.FC = () => {
             <Tab label='Register' />
           </Tabs>
 
-          <form className='auth__form' noValidate autoComplete='off'>
+          <form className='form' noValidate autoComplete='off'>
             <TabPanel value={value} index={0}>
               <Grid container spacing={1} justify='center'>
-                <Grid item xs={10} sm={6} md={4}>
-                  <TextField
-                    id='email'
-                    label='Email'
-                    variant='outlined'
-                    type='email'
-                  />
-                  <TextField
-                    id='password'
-                    label='Password'
-                    variant='outlined'
-                    type='password'
-                  />
+                <Grid item xs={12} sm={12} md={12} className='auth__grid'>
+                  <div className='form__textfield-div'>
+                    <TextField
+                      id='email'
+                      label='Email'
+                      variant='outlined'
+                      type='email'
+                      className='form__textfield'
+                    />
+                  </div>
+
+                  <div className='form__textfield-div'>
+                    <TextField
+                      id='password'
+                      label='Password'
+                      variant='outlined'
+                      type='password'
+                      className='form__textfield'
+                    />
+                  </div>
                 </Grid>
               </Grid>
             </TabPanel>
