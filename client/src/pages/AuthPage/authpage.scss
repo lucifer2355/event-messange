@@ -5,6 +5,10 @@
   height: 70vh;
 }
 
+.tab__label {
+  font-size: 1.6rem;
+}
+
 .form {
   &__textfield-div:not(:first-child) {
     margin-top: 1rem;

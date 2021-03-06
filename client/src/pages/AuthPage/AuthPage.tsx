@@ -59,8 +59,8 @@ const AuthPage: React.FC = () => {
             variant='fullWidth'
             aria-label='auth form tabs'
           >
-            <Tab label='Login' />
-            <Tab label='Register' />
+            <Tab label={<span className='tab__label'>Login</span>} />
+            <Tab label={<span className='tab__label'>Register</span>} />
           </Tabs>
 
           <form className='form' noValidate autoComplete='off'>
