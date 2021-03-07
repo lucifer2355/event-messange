@@ -5,11 +5,10 @@ import AppTextField from "../AppTextField/AppTextField";
 import AppButton from "../AppButton/AppButton";
 
 interface LoginFormProps {
-  values: string;
   isValid: boolean;
 }
 
-const LoginForm: React.FC = ({ values, isValid }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ isValid }) => {
   return (
     <Form className='login__form'>
       <AppTextField label='Email' type='email' style={{ fontSize: "1.2rem" }} />
@@ -19,7 +18,7 @@ const LoginForm: React.FC = ({ values, isValid }) => {
         style={{ fontSize: "1.2rem" }}
       />
 
-      <AppButton title='Login' />
+      <AppButton title='Login' other={{ disabled: { isValid } }} />
     </Form>
   );
 };

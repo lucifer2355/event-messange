@@ -4,13 +4,15 @@ import { Button } from "@material-ui/core";
 interface AppButtonProps {
   title: string;
   color?: "inherit" | "primary" | "secondary" | "default";
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  other?: React.ReactNode;
 }
 
 const AppButton: React.FC<AppButtonProps> = ({
   title,
   color = "primary",
-  onClick
+  onClick,
+  ...other
 }) => {
   return (
     <div className='button'>
@@ -19,6 +21,7 @@ const AppButton: React.FC<AppButtonProps> = ({
         color={color}
         className='button__style'
         onClick={onClick}
+        {...other}
       >
         {title}
       </Button>

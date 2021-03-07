@@ -3,16 +3,18 @@ import { TextField } from "@material-ui/core";
 
 interface AppTextFieldProps {
   label: string;
-  variant?: "filled" | "outlined" | "standard";
   type: string;
   style: React.CSSProperties;
+  variant?: "filled" | "outlined" | "standard";
+  other?: React.ReactNode;
 }
 
 const AppTextField: React.FC<AppTextFieldProps> = ({
   label,
   variant = "outlined",
   type,
-  style
+  style,
+  ...other
 }) => {
   return (
     <div className='textField'>
@@ -24,6 +26,7 @@ const AppTextField: React.FC<AppTextFieldProps> = ({
         InputProps={{ style: style }}
         InputLabelProps={{ style: style }}
         className='textField__style'
+        {...other}
       />
     </div>
   );
