@@ -2,7 +2,9 @@
 @import "./variables.scss";
 
 //! Page SCSS files
-@import "../pages/AuthPage/authpage.scss";
-@import "../pages/HomePage/homepage.scss";
+@import "../pages/AuthPage/AuthPage.scss";
+@import "../pages/HomePage/HomePage.scss";
 
 //! Component SCSS files
+@import "../components/AppTextField/AppTextField.scss";
+@import "../components/AppButton/AppButton.scss";
