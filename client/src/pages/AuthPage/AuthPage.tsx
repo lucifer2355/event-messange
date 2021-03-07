@@ -6,14 +6,14 @@ import {
   Paper,
   Tabs,
   Box,
-  TextField,
-  Grid,
-  Button
+  Grid
 } from "@material-ui/core";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-const validator = Yup.object().shape({
+import LoginForm from "../../components/LoginForm/LoginForm";
+
+const loginValidator = Yup.object().shape({
   email: Yup.string()
     .email()
     .label("Email")
@@ -62,9 +62,15 @@ const AuthPage: React.FC = () => {
     setValue(newValue);
   };
 
+  const handleSubmit = (values: object) => {
+    console.log("hello");
+
+    console.log(values);
+  };
+
   return (
     <div className='auth__container'>
-      <Container maxWidth='sm'>
+      <Container maxWidth='sm' style={{ marginTop: "20rem" }}>
         <Paper square>
           <Tabs
             value={value}
@@ -82,6 +88,12 @@ const AuthPage: React.FC = () => {
           <TabPanel value={value} index={0}>
             <Grid container spacing={1} justify='center'>
               <Grid item xs={8} sm={8} md={8} className='auth__grid'>
+                <Formik
+                  component={LoginForm}
+                  initialValues={{ email: "", password: "" }}
+                  validationSchema={loginValidator}
+                  onSubmit={handleSubmit}
+                />
                 {/* <div className='form__textfield-div'>
                   <TextField
                     id='email'
