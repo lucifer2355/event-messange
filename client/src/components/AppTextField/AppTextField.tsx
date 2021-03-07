@@ -13,7 +13,7 @@ const AppTextField: React.FC<AppTextFieldProps> = ({
   style
 }) => {
   return (
-    <div className='textField__div'>
+    <div className='textField'>
       <TextField
         id={label}
         label={label}
@@ -21,7 +21,7 @@ const AppTextField: React.FC<AppTextFieldProps> = ({
         type='email'
         InputProps={{ style: style }}
         InputLabelProps={{ style: style }}
-        className='textField'
+        className='textField__style'
       />
     </div>
   );
