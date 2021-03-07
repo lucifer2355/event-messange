@@ -1,8 +1,7 @@
 .auth__container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 70vh;
+  margin-top: 20rem;
 }
 
 .tab__label {
@@ -11,7 +10,7 @@
 
 .form {
   &__textfield-div:not(:first-child) {
-    margin-top: 1rem;
+    margin-top: 1.1rem;
   }
 
   &__textfield {

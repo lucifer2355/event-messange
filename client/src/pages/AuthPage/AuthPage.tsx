@@ -7,7 +7,8 @@ import {
   Tabs,
   Box,
   TextField,
-  Grid
+  Grid,
+  Button
 } from "@material-ui/core";
 
 interface TabPanelProps {
@@ -89,6 +90,20 @@ const AuthPage: React.FC = () => {
                       InputLabelProps={{ style: { fontSize: "1.5rem" } }}
                       className='form__textfield'
                     />
+                  </div>
+
+                  <div className='form__textfield-div'>
+                    <Button
+                      variant='contained'
+                      color='primary'
+                      style={{
+                        width: "100%",
+                        fontSize: "1.5rem",
+                        marginTop: "1rem"
+                      }}
+                    >
+                      Login
+                    </Button>
                   </div>
                 </Grid>
               </Grid>
