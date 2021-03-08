@@ -34,7 +34,11 @@ const LoginForm: React.FC<LoginFormProps> = ({
         other={{ name: "password" }}
       />
 
-      <AppButton title='Login' other={{ disabled: isValid }} />
+      <AppButton
+        title='Login'
+        other={{ disabled: isValid }}
+        onClick={() => console.log("hello")}
+      />
     </Form>
   );
 };
