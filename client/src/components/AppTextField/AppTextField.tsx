@@ -5,6 +5,7 @@ interface AppTextFieldProps {
   label: string;
   type: string;
   style: React.CSSProperties;
+  error?: boolean;
   variant?: "filled" | "outlined" | "standard";
   other?: React.ReactNode;
 }
@@ -14,12 +15,14 @@ const AppTextField: React.FC<AppTextFieldProps> = ({
   variant = "outlined",
   type,
   style,
+  error,
   ...other
 }) => {
   return (
     <div className='textField'>
       <TextField
         id={label}
+        error={error}
         label={label}
         variant={variant}
         type={type}

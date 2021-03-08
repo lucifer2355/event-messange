@@ -6,15 +6,22 @@ import AppButton from "../AppButton/AppButton";
 
 interface LoginFormProps {
   isValid: boolean;
-  handleChange: void;
+  handleChange: React.ChangeEvent<HTMLInputElement>;
+  errors: object;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ isValid, handleChange }) => {
+const LoginForm: React.FC<LoginFormProps> = ({
+  isValid,
+  handleChange,
+  errors
+}) => {
   console.log("isValid", isValid);
+  console.log("errors", errors);
 
   return (
     <Form className='login__form'>
       <AppTextField
+        // error={errors.email}
         label='Email'
         type='email'
         style={{ fontSize: "1.2rem" }}
