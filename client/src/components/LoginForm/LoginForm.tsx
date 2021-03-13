@@ -25,18 +25,24 @@ interface LoginFormProps {
   errors: object;
 }
 
+interface InitialValue {
+  email: string;
+  password: string;
+}
+
 const LoginForm: React.FC<LoginFormProps> = ({
   isValid,
   handleChange,
   errors
 }) => {
-  const handleSubmit = async (email: any, password: any) => {
+  const initialValue: InitialValue = { email: "", password: "" };
+  const handleSubmit = async (email: string, password: string) => {
     console.log("login submit");
   };
 
   return (
     <Form
-      initialValues={{ email: "", password: "" }}
+      initialValues={initialValue}
       onSubmit={() => handleSubmit}
       validationSchema={validationSchema}
     >
@@ -55,7 +61,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
       <SubmitButton
         title='Login'
-        onClick={() => console.log("hello")}
         // other={{ disabled: isValid }}
       />
     </Form>

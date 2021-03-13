@@ -6,8 +6,9 @@ import AppTextField from "../AppTextField/AppTextField";
 interface AppFormFieldProps {
   name: string;
   type: string;
-  width: number;
+  width?: number;
   style?: React.CSSProperties;
+  other?: React.ReactNode;
 }
 
 const AppFormField: React.FC<AppFormFieldProps> = ({

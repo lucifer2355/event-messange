@@ -2,8 +2,8 @@ import React from "react";
 import { Formik } from "formik";
 
 interface AppFormProps {
-  initialValues: React.MouseEvent<HTMLButtonElement, MouseEvent>;
-  onSubmit: React.MouseEventHandler<HTMLButtonElement>;
+  initialValues: {};
+  onSubmit: () => void;
   validationSchema: object;
 }
 
