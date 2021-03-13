@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 interface AppButtonProps {
   title: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: () => void;
   color?: "inherit" | "primary" | "secondary" | "default";
   other?: React.ReactNode;
 }

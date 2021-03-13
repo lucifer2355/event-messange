@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
 
 interface LoginFormProps {
   isValid: boolean;
-  handleChange: React.ChangeEvent<HTMLInputElement>;
+  handleChange: () => void;
   errors: object;
 }
 
@@ -30,7 +30,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
   handleChange,
   errors
 }) => {
-  const handleSubmit = async ({ email, password }) => {
+  const handleSubmit = async (email: any, password: any) => {
     console.log("login submit");
   };
 

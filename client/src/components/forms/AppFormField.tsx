@@ -18,6 +18,7 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
   ...otherProps
 }) => {
   const { setFieldValue, errors, touched, values } = useFormikContext();
+  const formValues: any = values;
 
   return (
     <>
@@ -29,7 +30,7 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
         other={{
           name: "email",
           onChange: (text: any) => setFieldValue(name, text),
-          value: values[name]
+          value: formValues[name]
         }}
         {...otherProps}
       />
