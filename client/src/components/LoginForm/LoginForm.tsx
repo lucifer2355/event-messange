@@ -1,8 +1,23 @@
 import React from "react";
-import { Form } from "formik";
+import * as Yup from "yup";
 
-import AppTextField from "../AppTextField/AppTextField";
-import AppButton from "../AppButton/AppButton";
+import {
+  AppForm as Form,
+  AppFormField as FormField,
+  SubmitButton
+} from "../forms";
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email()
+    .label("Email")
+    .required(),
+  password: Yup.string()
+    .min(4, "Too Short")
+    .max(15, "Too long!")
+    .label("Password")
+    .required()
+});
 
 interface LoginFormProps {
   isValid: boolean;
@@ -15,29 +30,33 @@ const LoginForm: React.FC<LoginFormProps> = ({
   handleChange,
   errors
 }) => {
-  console.log("isValid", isValid);
-  console.log("errors", errors);
+  const handleSubmit = async ({ email, password }) => {
+    console.log("login submit");
+  };
 
   return (
-    <Form className='login__form'>
-      <AppTextField
-        // error={errors.email}
-        label='Email'
+    <Form
+      initialValues={{ email: "", password: "" }}
+      onSubmit={() => handleSubmit}
+      validationSchema={validationSchema}
+    >
+      <FormField
+        name='Email'
         type='email'
         style={{ fontSize: "1.2rem" }}
         other={{ name: "email", onChange: handleChange }}
       />
-      <AppTextField
-        label='Password'
+      <FormField
+        name='Password'
         type='password'
         style={{ fontSize: "1.2rem" }}
         other={{ name: "password" }}
       />
 
-      <AppButton
+      <SubmitButton
         title='Login'
-        other={{ disabled: isValid }}
         onClick={() => console.log("hello")}
+        // other={{ disabled: isValid }}
       />
     </Form>
   );

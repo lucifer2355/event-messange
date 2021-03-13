@@ -9,21 +9,8 @@ import {
   Grid
 } from "@material-ui/core";
 import { Formik } from "formik";
-import * as Yup from "yup";
 
 import LoginForm from "../../components/LoginForm/LoginForm";
-
-const loginValidator = Yup.object().shape({
-  email: Yup.string()
-    .email()
-    .label("Email")
-    .required(),
-  password: Yup.string()
-    .min(4, "Too Short")
-    .max(15, "Too long!")
-    .label("Password")
-    .required()
-});
 
 interface TabPanelProps {
   children?: React.ReactNode;

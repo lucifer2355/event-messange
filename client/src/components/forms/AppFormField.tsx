@@ -5,12 +5,16 @@ import AppTextField from "../AppTextField/AppTextField";
 
 interface AppFormFieldProps {
   name: string;
+  type: string;
   width: number;
+  style?: React.CSSProperties;
 }
 
 const AppFormField: React.FC<AppFormFieldProps> = ({
   name,
   width,
+  type,
+  style,
   ...otherProps
 }) => {
   const { setFieldValue, errors, touched, values } = useFormikContext();
