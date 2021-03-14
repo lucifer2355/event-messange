@@ -18,15 +18,17 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
   style,
   ...otherProps
 }) => {
-  const { setFieldValue, errors, touched, values } = useFormikContext();
+  const { setFieldValue, errors, values } = useFormikContext();
   const formValues: any = values;
+  const formErrors: any = errors;
+  console.log("error", errors);
 
   return (
     <>
       <AppTextField
-        // error={errors.email}
+        error={formErrors[name]}
         label={name}
-        type='email'
+        type={type}
         style={{ fontSize: "1.2rem" }}
         other={{
           name: "email",
@@ -35,13 +37,6 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
         }}
         {...otherProps}
       />
-      {/* <AppTextField
-        onBlur={() => setFieldTouched(name)}
-        onChangeText={(text: any) => setFieldValue(name, text)}
-        value={values[name]}
-        width={width}
-        {...otherProps}
-      /> */}
     </>
   );
 };

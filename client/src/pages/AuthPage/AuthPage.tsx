@@ -8,7 +8,6 @@ import {
   Box,
   Grid
 } from "@material-ui/core";
-import { Formik } from "formik";
 
 import LoginForm from "../../components/LoginForm/LoginForm";
 
@@ -75,12 +74,7 @@ const AuthPage: React.FC = () => {
           <TabPanel value={value} index={0}>
             <Grid container spacing={1} justify='center'>
               <Grid item xs={8} sm={8} md={8} className='auth__grid'>
-                <Formik
-                  component={LoginForm}
-                  initialValues={{ email: "", password: "" }}
-                  validationSchema={loginValidator}
-                  onSubmit={handleSubmit}
-                />
+                <LoginForm />
                 {/* <div className='form__textfield-div'>
                   <TextField
                     id='email'
