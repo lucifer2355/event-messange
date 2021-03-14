@@ -4,6 +4,7 @@ import { useFormikContext } from "formik";
 import AppTextField from "../AppTextField/AppTextField";
 
 interface AppFormFieldProps {
+  label: string;
   name: string;
   type: string;
   width?: number;
@@ -12,6 +13,7 @@ interface AppFormFieldProps {
 }
 
 const AppFormField: React.FC<AppFormFieldProps> = ({
+  label,
   name,
   width,
   type,
@@ -21,20 +23,17 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
   const { setFieldValue, errors, values } = useFormikContext();
   const formValues: any = values;
   const formErrors: any = errors;
-  console.log("error", errors);
 
   return (
     <>
       <AppTextField
         error={formErrors[name]}
-        label={name}
+        label={label}
+        name={name}
         type={type}
         style={{ fontSize: "1.2rem" }}
-        other={{
-          name: "email",
-          onChange: (text: any) => setFieldValue(name, text),
-          value: formValues[name]
-        }}
+        onChange={(text: any) => setFieldValue(name, text.target.value)}
+        value={formValues[name]}
         {...otherProps}
       />
     </>

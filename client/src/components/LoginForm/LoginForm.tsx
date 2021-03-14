@@ -21,7 +21,6 @@ const validationSchema = Yup.object().shape({
 
 interface LoginFormProps {
   isValid?: boolean;
-  handleChange?: () => void;
   errors?: object;
 }
 
@@ -30,34 +29,32 @@ interface InitialValue {
   password: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({
-  isValid,
-  handleChange,
-  errors
-}) => {
+const LoginForm: React.FC<LoginFormProps> = ({ isValid, errors }) => {
   const initialValue: InitialValue = { email: "", password: "" };
 
-  const handleSubmit = async (email: string, password: string) => {
+  const handleSubmit: any = async ({ email, password }: InitialValue) => {
     console.log("login submit");
+    console.log("Email", email);
+    console.log("Password", password);
   };
 
   return (
     <Form
       initialValues={initialValue}
-      onSubmit={() => handleSubmit}
+      onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
       <FormField
-        name='Email'
+        label='Email'
+        name='email'
         type='email'
         style={{ fontSize: "1.2rem" }}
-        other={{ name: "email", onChange: handleChange }}
       />
       <FormField
-        name='Password'
+        label='Password'
+        name='password'
         type='password'
         style={{ fontSize: "1.2rem" }}
-        other={{ name: "password" }}
       />
 
       <SubmitButton
