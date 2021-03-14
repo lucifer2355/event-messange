@@ -13,8 +13,6 @@ const validationSchema = Yup.object().shape({
     .label("Email")
     .required(),
   password: Yup.string()
-    .min(4, "Too Short")
-    .max(15, "Too long!")
     .label("Password")
     .required()
 });

@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 
 import LoginForm from "../../components/LoginForm/LoginForm";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -75,48 +76,15 @@ const AuthPage: React.FC = () => {
             <Grid container spacing={1} justify='center'>
               <Grid item xs={8} sm={8} md={8} className='auth__grid'>
                 <LoginForm />
-                {/* <div className='form__textfield-div'>
-                  <TextField
-                    id='email'
-                    label='Email'
-                    variant='outlined'
-                    type='email'
-                    InputProps={{ style: { fontSize: "1.5rem" } }}
-                    InputLabelProps={{ style: { fontSize: "1.5rem" } }}
-                    className='form__textfield'
-                  />
-                </div>
-
-                <div className='form__textfield-div'>
-                  <TextField
-                    id='password'
-                    label='Password'
-                    variant='outlined'
-                    type='password'
-                    InputProps={{ style: { fontSize: "1.5rem" } }}
-                    InputLabelProps={{ style: { fontSize: "1.5rem" } }}
-                    className='form__textfield'
-                  />
-                </div>
-
-                <div className='form__textfield-div'>
-                  <Button
-                    variant='contained'
-                    color='primary'
-                    style={{
-                      width: "100%",
-                      fontSize: "1.5rem",
-                      marginTop: "1rem"
-                    }}
-                  >
-                    Login
-                  </Button>
-                </div> */}
               </Grid>
             </Grid>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Register
+            <Grid container spacing={1} justify='center'>
+              <Grid item xs={8} sm={8} md={8} className='auth__grid'>
+                <RegistrationForm />
+              </Grid>
+            </Grid>
           </TabPanel>
           {/* </form> */}
         </Paper>
