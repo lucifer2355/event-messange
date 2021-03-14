@@ -19,17 +19,12 @@ const validationSchema = Yup.object().shape({
     .required()
 });
 
-interface LoginFormProps {
-  isValid?: boolean;
-  errors?: object;
-}
-
 interface InitialValue {
   email: string;
   password: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ isValid, errors }) => {
+const LoginForm: React.FC = () => {
   const initialValue: InitialValue = { email: "", password: "" };
 
   const handleSubmit: any = async ({ email, password }: InitialValue) => {
