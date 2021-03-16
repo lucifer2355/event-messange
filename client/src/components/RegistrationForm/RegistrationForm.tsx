@@ -12,7 +12,6 @@ interface InitialValue {
   lastName: string;
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
 const validationSchema = Yup.object().shape({
@@ -30,9 +29,6 @@ const validationSchema = Yup.object().shape({
     .min(4, "Too Short")
     .max(15, "Too long!")
     .label("Password")
-    .required(),
-  confirmPassword: Yup.string()
-    .label("Confirm Password")
     .required()
 });
 
@@ -41,8 +37,7 @@ const RegistrationForm: React.FC = () => {
     firstName: "",
     lastName: "",
     email: "",
-    password: "",
-    confirmPassword: ""
+    password: ""
   };
 
   const handleSubmit: any = ({
@@ -51,7 +46,10 @@ const RegistrationForm: React.FC = () => {
     email,
     password
   }: InitialValue) => {
-    console.log("Regisartion Data", firstName);
+    console.log("First Name", firstName);
+    console.log("Last Name", lastName);
+    console.log("Email", email);
+    console.log("Password", password);
   };
 
   return (
@@ -84,13 +82,12 @@ const RegistrationForm: React.FC = () => {
         type='password'
         style={{ fontSize: "1.2rem" }}
       />
-      <FormField
+      {/* <FormField
         label='Confirm Password'
         name='ConfirmPassword'
         type='password'
-        style={{ fontSize: "1.2rem" }}
-      />
-
+        style={{ fontSize: "1.2rem" }} */}
+      {/* /> */}
       <SubmitButton title='Create Account' />
     </Form>
   );
