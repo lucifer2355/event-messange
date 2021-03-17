@@ -6,40 +6,28 @@ const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    require: [true, "Please tell your name!"]
+    require: [true, "Please tell your name!"],
   },
   email: {
     type: String,
     require: [true, "Please provide your email"],
     unique: true,
     lowercase: true,
-    validator: [validator.isEmail, "Please provide valid email"]
+    validator: [validator.isEmail, "Please provide valid email"],
   },
   role: {
     type: String,
     default: "user",
     enum: {
       values: ["user", "admin"],
-      message: "Role is either: user, admin"
-    }
+      message: "Role is either: user, admin",
+    },
   },
   password: {
     type: String,
     require: [true, "Please provide a password"],
     minlength: 6,
-    select: false
-  },
-  passwordConfirm: {
-    type: String,
-    required: [true, "Please confirm your password"],
-    validate: {
-      //! This only works on save() and create()
-      validator: function(el) {
-        return el === this.password;
-      },
-      message: "Passwords are not the same"
-    },
-    select: false
+    select: false,
   },
   passwordChangedAt: Date,
   passwordResetToken: String,
@@ -47,8 +35,8 @@ const userSchema = new mongoose.Schema({
   active: {
     type: Boolean,
     default: true,
-    select: false
-  }
+    select: false,
+  },
 });
 
 userSchema.pre("save", async function(next) {

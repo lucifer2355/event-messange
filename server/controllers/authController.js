@@ -5,9 +5,9 @@ const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
-const signToken = id =>
+const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE_IN
+    expiresIn: process.env.JWT_EXPIRE_IN,
   });
 
 const createSendToken = (user, statusCode, res) => {
@@ -16,7 +16,7 @@ const createSendToken = (user, statusCode, res) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRE_IN * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true
+    httpOnly: true,
   };
   if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
 
@@ -29,8 +29,8 @@ const createSendToken = (user, statusCode, res) => {
     status: "success",
     token,
     data: {
-      user
-    }
+      user,
+    },
   });
 };
 

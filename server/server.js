@@ -15,12 +15,12 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(() => {
     console.log("DB connection successfully");
   })
-  .catch(error => console.log("DB connection error", error.message));
+  .catch((error) => console.log("DB connection error", error.message));
 
 app.listen(process.env.PORT, () => {
   console.log(`app running on prot ${process.env.PORT}`);
