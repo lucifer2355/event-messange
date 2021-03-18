@@ -36,12 +36,14 @@ const createSendToken = (user, statusCode, res) => {
 
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body);
+  console.log(newUser);
 
   createSendToken(newUser, 201, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
+  console.log(email, password);
 
   //! Check if email or password exist
   if (!email || !password) {
