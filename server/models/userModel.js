@@ -54,8 +54,11 @@ userSchema.pre("save", function(next) {
   next();
 });
 
-userSchema.method.correctPassword = (candidatePassword, userPassword) =>
-  bcrypt.compare(candidatePassword, userPassword);
+userSchema.methods.correctPassword = function(candidatePassword, userPassword) {
+  console.log("candidate password", candidatePassword);
+  console.log("userPassword", userPassword);
+  return bcrypt.compare(candidatePassword, userPassword);
+};
 
 const User = mongoose.model("User", userSchema);
 
