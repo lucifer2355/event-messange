@@ -1,3 +1,4 @@
+import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 
 export interface AuthState {
@@ -20,3 +21,10 @@ export interface LoginValues {
   email: string;
   password: string;
 }
+
+export type AuthDispatch<ReturnType = void> = ThunkAction<
+  ReturnType,
+  AuthState,
+  unknown,
+  Action<string>
+>;
