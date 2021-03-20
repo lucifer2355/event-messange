@@ -11,7 +11,7 @@ export interface AuthState {
 }
 
 export interface SignUpValues {
-  fistName: string;
+  firstName: string;
   lastName: string;
   email: string;
   password: string;

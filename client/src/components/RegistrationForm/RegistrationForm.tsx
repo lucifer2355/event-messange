@@ -1,18 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+
+import * as authActions from "../../store/auth/authAction";
+import { SignUpValues } from "../../store/auth/types";
 
 import {
   AppForm as Form,
   AppFormField as FormField,
-  SubmitButton
+  SubmitButton,
 } from "../forms";
-
-interface InitialValue {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -29,27 +26,20 @@ const validationSchema = Yup.object().shape({
     .min(4, "Too Short")
     .max(15, "Too long!")
     .label("Password")
-    .required()
+    .required(),
 });
 
 const RegistrationForm: React.FC = () => {
-  const initialValue: InitialValue = {
+  const initialValue: SignUpValues = {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
   };
+  const dispatch = useDispatch();
 
-  const handleSubmit: any = ({
-    firstName,
-    lastName,
-    email,
-    password
-  }: InitialValue) => {
-    console.log("First Name", firstName);
-    console.log("Last Name", lastName);
-    console.log("Email", email);
-    console.log("Password", password);
+  const handleSubmit: any = async (values: SignUpValues) => {
+    await dispatch(authActions.signUp(values));
   };
 
   return (

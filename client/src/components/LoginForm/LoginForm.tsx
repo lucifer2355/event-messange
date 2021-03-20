@@ -1,10 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+
+import * as authActions from "../../store/auth/authAction";
+import { LoginValues } from "../../store/auth/types";
 
 import {
   AppForm as Form,
   AppFormField as FormField,
-  SubmitButton
+  SubmitButton,
 } from "../forms";
 
 const validationSchema = Yup.object().shape({
@@ -14,21 +18,15 @@ const validationSchema = Yup.object().shape({
     .required(),
   password: Yup.string()
     .label("Password")
-    .required()
+    .required(),
 });
 
-interface InitialValue {
-  email: string;
-  password: string;
-}
-
 const LoginForm: React.FC = () => {
-  const initialValue: InitialValue = { email: "", password: "" };
+  const initialValue: LoginValues = { email: "", password: "" };
+  const dispatch = useDispatch();
 
-  const handleSubmit: any = async ({ email, password }: InitialValue) => {
-    console.log("login submit");
-    console.log("Email", email);
-    console.log("Password", password);
+  const handleSubmit: any = async (values: LoginValues) => {
+    console.log(values);
   };
 
   return (
