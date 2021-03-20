@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
 
 import * as authActions from "../../store/auth/authAction";
@@ -37,9 +38,10 @@ const RegistrationForm: React.FC = () => {
     password: "",
   };
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit: any = async (values: SignUpValues) => {
-    await dispatch(authActions.signUp(values));
+    await dispatch(authActions.signUp(values, history));
   };
 
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useHistory, RouteComponentProps } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
 
 import * as authActions from "../../store/auth/authAction";
@@ -27,10 +27,7 @@ const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit: any = async (
-    values: LoginValues,
-    history: RouteComponentProps
-  ) => {
+  const handleSubmit: any = async (values: LoginValues) => {
     await dispatch(authActions.login(values, history));
   };
 
@@ -53,10 +50,7 @@ const LoginForm: React.FC = () => {
         style={{ fontSize: "1.2rem" }}
       />
 
-      <SubmitButton
-        title='Login'
-        // other={{ disabled: isValid }}
-      />
+      <SubmitButton title='Login' />
     </Form>
   );
 };

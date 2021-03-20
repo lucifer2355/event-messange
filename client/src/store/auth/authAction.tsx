@@ -1,5 +1,4 @@
 import axios from "../../api/axios";
-import { RouteComponentProps } from "react-router-dom";
 
 import { AuthDispatch, LoginValues, SignUpValues } from "./types";
 
@@ -8,7 +7,7 @@ export const REGISTER_COMPLETE = "REGISTER_COMPLETE";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_COMPLETE = "LOGIN_COMPLETE";
 
-export const signUp = (values: SignUpValues): AuthDispatch => async (
+export const signUp = (values: SignUpValues, history): AuthDispatch => async (
   dispatch
 ) => {
   dispatch({ type: REGISTER_START });
@@ -23,6 +22,7 @@ export const signUp = (values: SignUpValues): AuthDispatch => async (
     localStorage.setItem("token", data.token);
 
     dispatch({ type: REGISTER_COMPLETE, token: data.token });
+    history.replace("/");
   } catch (error) {
     console.warn("Register Error", error);
   }
@@ -42,7 +42,7 @@ export const login = (
     localStorage.setItem("token", data.token);
 
     dispatch({ type: LOGIN_COMPLETE, token: data.token });
-    // history.push("/");
+    history.replace("/");
   } catch (error) {
     console.warn("Login Error", error);
   }

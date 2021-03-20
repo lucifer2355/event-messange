@@ -34,6 +34,7 @@ export const authReducer = (
         ...state,
         isLoading: false,
         isSignIn: true,
+        token: action.token,
       };
 
     case REGISTER_START:
@@ -48,6 +49,7 @@ export const authReducer = (
         ...state,
         isLoading: false,
         isSignIn: true,
+        token: action.token,
       };
 
     default:
