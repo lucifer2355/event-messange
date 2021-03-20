@@ -10,14 +10,18 @@ export const LOGIN_COMPLETE = "LOGIN_COMPLETE";
 export const signUp = (values: SignUpValues): AuthDispatch => async (
   dispatch
 ) => {
-  // dispatch({ type: REGISTER_START });
+  dispatch({ type: REGISTER_START });
   try {
-    console.log("firstName", values.firstName);
-    console.log("lastName", values.lastName);
-    console.log("email", values.email);
-    console.log("password", values.password);
+    const response = await axios.post("api/users/signup", {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      password: values.password,
+    });
 
-    // dispatch({ type: REGISTER_COMPLETE });
+    console.log(response.data);
+
+    dispatch({ type: REGISTER_COMPLETE });
   } catch (error) {
     console.warn("Register Error", error);
   }

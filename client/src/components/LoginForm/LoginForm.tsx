@@ -26,7 +26,7 @@ const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleSubmit: any = async (values: LoginValues) => {
-    console.log(values);
+    await dispatch(authActions.login(values));
   };
 
   return (
