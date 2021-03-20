@@ -30,9 +30,15 @@ export const signUp = (values: SignUpValues): AuthDispatch => async (
 export const login = (values: LoginValues): AuthDispatch => async (
   dispatch
 ) => {
+  dispatch({ type: LOGIN_START });
   try {
-    console.log("email", values.email);
-    console.log("password", values.password);
+    const response = await axios.post("/api/users/login", {
+      email: values.email,
+      password: values.password,
+    });
+
+    console.log(response.data);
+    dispatch({ type: LOGIN_COMPLETE });
   } catch (error) {
     console.warn("Login Error", error);
   }
