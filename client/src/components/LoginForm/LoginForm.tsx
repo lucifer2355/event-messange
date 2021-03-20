@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useHistory, RouteComponentProps } from "react-router-dom";
 import * as Yup from "yup";
 
 import * as authActions from "../../store/auth/authAction";
@@ -24,9 +25,13 @@ const validationSchema = Yup.object().shape({
 const LoginForm: React.FC = () => {
   const initialValue: LoginValues = { email: "", password: "" };
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const handleSubmit: any = async (values: LoginValues) => {
-    await dispatch(authActions.login(values));
+  const handleSubmit: any = async (
+    values: LoginValues,
+    history: RouteComponentProps
+  ) => {
+    await dispatch(authActions.login(values, history));
   };
 
   return (

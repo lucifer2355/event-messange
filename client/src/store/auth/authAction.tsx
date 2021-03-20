@@ -1,4 +1,5 @@
 import axios from "../../api/axios";
+import { RouteComponentProps } from "react-router-dom";
 
 import { AuthDispatch, LoginValues, SignUpValues } from "./types";
 
@@ -12,33 +13,36 @@ export const signUp = (values: SignUpValues): AuthDispatch => async (
 ) => {
   dispatch({ type: REGISTER_START });
   try {
-    const response = await axios.post("api/users/signup", {
+    const { data } = await axios.post("api/users/signup", {
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
       password: values.password,
     });
 
-    console.log(response.data);
+    localStorage.setItem("token", data.token);
 
-    dispatch({ type: REGISTER_COMPLETE });
+    dispatch({ type: REGISTER_COMPLETE, token: data.token });
   } catch (error) {
     console.warn("Register Error", error);
   }
 };
 
-export const login = (values: LoginValues): AuthDispatch => async (
-  dispatch
-) => {
+export const login = (
+  values: LoginValues,
+  history: any
+): AuthDispatch => async (dispatch) => {
   dispatch({ type: LOGIN_START });
   try {
-    const response = await axios.post("/api/users/login", {
+    const { data } = await axios.post("/api/users/login", {
       email: values.email,
       password: values.password,
     });
 
-    console.log(response.data);
-    dispatch({ type: LOGIN_COMPLETE });
+    localStorage.setItem("token", data.token);
+
+    dispatch({ type: LOGIN_COMPLETE, token: data.token });
+    // history.push("/");
   } catch (error) {
     console.warn("Login Error", error);
   }
