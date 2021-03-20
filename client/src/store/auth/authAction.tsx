@@ -1,6 +1,6 @@
 import axios from "../../api/axios";
 
-import { AuthDispatch, SignUpValues } from "./types";
+import { AuthDispatch, LoginValues, SignUpValues } from "./types";
 
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_COMPLETE = "REGISTER_COMPLETE";
@@ -20,5 +20,16 @@ export const signUp = (values: SignUpValues): AuthDispatch => async (
     // dispatch({ type: REGISTER_COMPLETE });
   } catch (error) {
     console.warn("Register Error", error);
+  }
+};
+
+export const login = (values: LoginValues): AuthDispatch => async (
+  dispatch
+) => {
+  try {
+    console.log("email", values.email);
+    console.log("password", values.password);
+  } catch (error) {
+    console.warn("Login Error", error);
   }
 };
