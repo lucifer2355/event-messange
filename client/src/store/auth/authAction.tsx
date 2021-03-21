@@ -7,10 +7,11 @@ export const REGISTER_COMPLETE = "REGISTER_COMPLETE";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_COMPLETE = "LOGIN_COMPLETE";
 
-export const signUp = (values: SignUpValues, history): AuthDispatch => async (
-  dispatch
-) => {
-  dispatch({ type: REGISTER_START });
+export const signUp = (
+  values: SignUpValues,
+  history: any
+): AuthDispatch => async (dispatch) => {
+  dispatch({ type: "REGISTER_START" });
   try {
     const { data } = await axios.post("api/users/signup", {
       firstName: values.firstName,
@@ -21,7 +22,14 @@ export const signUp = (values: SignUpValues, history): AuthDispatch => async (
 
     localStorage.setItem("token", data.token);
 
-    dispatch({ type: REGISTER_COMPLETE, token: data.token });
+    dispatch({
+      type: "REGISTER_COMPLETE",
+      payload: {
+        token: data.token,
+        firstName: data.firstName,
+        email: data.email,
+      },
+    });
     history.replace("/");
   } catch (error) {
     console.warn("Register Error", error);
@@ -32,7 +40,7 @@ export const login = (
   values: LoginValues,
   history: any
 ): AuthDispatch => async (dispatch) => {
-  dispatch({ type: LOGIN_START });
+  dispatch({ type: "LOGIN_START" });
   try {
     const { data } = await axios.post("/api/users/login", {
       email: values.email,
@@ -41,7 +49,14 @@ export const login = (
 
     localStorage.setItem("token", data.token);
 
-    dispatch({ type: LOGIN_COMPLETE, token: data.token });
+    dispatch({
+      type: "LOGIN_COMPLETE",
+      payload: {
+        token: data.token,
+        firstName: data.firstName,
+        email: data.email,
+      },
+    });
     history.replace("/");
   } catch (error) {
     console.warn("Login Error", error);

@@ -1,12 +1,10 @@
-import { Action } from "redux";
-
 import {
   LOGIN_COMPLETE,
   LOGIN_START,
   REGISTER_COMPLETE,
   REGISTER_START,
 } from "./authAction";
-import { AuthState } from "./types";
+import { AuthActionType, AuthState } from "./types";
 
 const initialState: AuthState = {
   isLoading: false,
@@ -19,7 +17,7 @@ const initialState: AuthState = {
 
 export const authReducer = (
   state = initialState,
-  action: Action<string>
+  action: AuthActionType
 ): AuthState => {
   switch (action.type) {
     case LOGIN_START:
@@ -34,7 +32,7 @@ export const authReducer = (
         ...state,
         isLoading: false,
         isSignIn: true,
-        token: action.token,
+        token: action.payload.token,
       };
 
     case REGISTER_START:
@@ -49,7 +47,7 @@ export const authReducer = (
         ...state,
         isLoading: false,
         isSignIn: true,
-        token: action.token,
+        token: action.payload.token,
       };
 
     default:

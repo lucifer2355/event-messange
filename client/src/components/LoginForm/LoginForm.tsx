@@ -1,9 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
 
 import * as authActions from "../../store/auth/authAction";
+import { RootState } from "../../store/rootReducer";
 import { LoginValues } from "../../store/auth/types";
 
 import {
@@ -26,6 +27,8 @@ const LoginForm: React.FC = () => {
   const initialValue: LoginValues = { email: "", password: "" };
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const { auth } = useSelector((state: RootState) => state);
 
   const handleSubmit: any = async (values: LoginValues) => {
     await dispatch(authActions.login(values, history));
