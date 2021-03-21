@@ -76,12 +76,6 @@ const RegistrationForm: React.FC = () => {
         type='password'
         style={{ fontSize: "1.2rem" }}
       />
-      {/* <FormField
-        label='Confirm Password'
-        name='ConfirmPassword'
-        type='password'
-        style={{ fontSize: "1.2rem" }} */}
-      {/* /> */}
       <SubmitButton title='Create Account' isLoading={auth.isLoading} />
     </Form>
   );
