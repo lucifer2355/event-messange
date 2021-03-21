@@ -6,7 +6,7 @@ import AppButton from "../AppButton/AppButton";
 
 interface SubmitButtonProps {
   title: string;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 const SubmitButton: React.FC<SubmitButtonProps> = ({ title, isLoading }) => {
