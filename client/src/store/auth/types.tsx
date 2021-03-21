@@ -24,13 +24,11 @@ export interface LoginValues {
 export interface LoginReturn {
   token: string;
   email: string;
-  firstName: string;
 }
 
 export interface RegisterReturn {
   token: string;
   email: string;
-  firstName: string;
 }
 
 export const LOGIN_START = "LOGIN_START";

@@ -55,8 +55,6 @@ userSchema.pre("save", function(next) {
 });
 
 userSchema.methods.correctPassword = function(candidatePassword, userPassword) {
-  console.log("candidate password", candidatePassword);
-  console.log("userPassword", userPassword);
   return bcrypt.compare(candidatePassword, userPassword);
 };
 

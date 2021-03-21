@@ -27,7 +27,6 @@ const LoginForm: React.FC = () => {
   const initialValue: LoginValues = { email: "", password: "" };
   const dispatch = useDispatch();
   const history = useHistory();
-
   const { auth } = useSelector((state: RootState) => state);
 
   const handleSubmit: any = async (values: LoginValues) => {
@@ -53,7 +52,7 @@ const LoginForm: React.FC = () => {
         style={{ fontSize: "1.2rem" }}
       />
 
-      <SubmitButton title='Login' />
+      <SubmitButton title='Login' isLoading={auth.isLoading} />
     </Form>
   );
 };

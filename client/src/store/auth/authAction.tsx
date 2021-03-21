@@ -26,8 +26,7 @@ export const signUp = (
       type: "REGISTER_COMPLETE",
       payload: {
         token: data.token,
-        firstName: data.firstName,
-        email: data.email,
+        email: data.user.email,
       },
     });
     history.replace("/");
@@ -53,8 +52,7 @@ export const login = (
       type: "LOGIN_COMPLETE",
       payload: {
         token: data.token,
-        firstName: data.firstName,
-        email: data.email,
+        email: data.user.email,
       },
     });
     history.replace("/");

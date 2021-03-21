@@ -1,9 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
 
 import * as authActions from "../../store/auth/authAction";
+import { RootState } from "../../store/rootReducer";
 import { SignUpValues } from "../../store/auth/types";
 
 import {
@@ -39,6 +40,7 @@ const RegistrationForm: React.FC = () => {
   };
   const dispatch = useDispatch();
   const history = useHistory();
+  const { auth } = useSelector((state: RootState) => state);
 
   const handleSubmit: any = async (values: SignUpValues) => {
     await dispatch(authActions.signUp(values, history));
@@ -80,7 +82,7 @@ const RegistrationForm: React.FC = () => {
         type='password'
         style={{ fontSize: "1.2rem" }} */}
       {/* /> */}
-      <SubmitButton title='Create Account' />
+      <SubmitButton title='Create Account' isLoading={auth.isLoading} />
     </Form>
   );
 };

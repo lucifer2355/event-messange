@@ -5,13 +5,14 @@ const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
-const signToken = (id) =>
-  jwt.sign({ id }, process.env.JWT_SECRET, {
+const signToken = (id, email, firstName) =>
+  jwt.sign({ id, email, firstName }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE_IN,
   });
 
 const createSendToken = (user, statusCode, res) => {
-  const token = signToken(user.id);
+  console.log(user);
+  const token = signToken(user.id, user.email, user.firstName);
   const cookieOptions = {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRE_IN * 24 * 60 * 60 * 1000
