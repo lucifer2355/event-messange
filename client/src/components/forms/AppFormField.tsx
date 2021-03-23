@@ -8,7 +8,9 @@ interface AppFormFieldProps {
   name: string;
   type: string;
   width?: number;
-  style?: React.CSSProperties;
+  multiline?: boolean;
+  rows?: number;
+  style?: any;
   other?: React.ReactNode;
 }
 
@@ -17,12 +19,15 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
   name,
   width,
   type,
+  rows,
+  multiline,
   style,
   ...otherProps
 }) => {
   const { setFieldValue, errors, values } = useFormikContext();
   const formValues: any = values;
   const formErrors: any = errors;
+  console.log(style);
 
   return (
     <>
@@ -31,7 +36,9 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
         label={label}
         name={name}
         type={type}
-        style={{ fontSize: "1.2rem" }}
+        multiline={multiline}
+        rows={4}
+        style={style}
         onChange={(text: any) => setFieldValue(name, text.target.value)}
         value={formValues[name]}
         {...otherProps}

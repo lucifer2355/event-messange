@@ -10,6 +10,8 @@ interface AppTextFieldProps {
   variant?: "filled" | "outlined" | "standard";
   onChange?: any;
   value?: any;
+  multiline?: boolean;
+  rows?: number;
   other?: any;
 }
 
@@ -22,6 +24,8 @@ const AppTextField: React.FC<AppTextFieldProps> = ({
   error,
   onChange,
   value,
+  rows,
+  multiline,
   ...other
 }) => {
   return (
@@ -37,6 +41,8 @@ const AppTextField: React.FC<AppTextFieldProps> = ({
         value={value}
         InputProps={{ style: style }}
         InputLabelProps={{ style: style }}
+        multiline={multiline}
+        rows={rows}
         className='textField__style'
         {...other}
       />

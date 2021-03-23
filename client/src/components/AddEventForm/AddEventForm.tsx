@@ -56,13 +56,39 @@ const AddEventForm: React.FC = () => {
           label='Title'
           name='title'
           type='text'
-          style={{ fontSize: "1.2rem" }}
+          style={{ fontSize: "1.5rem" }}
         />
         <FormField
           label='Message'
           name='message'
           type='text'
-          style={{ fontSize: "1.2rem" }}
+          multiline={true}
+          rows={4}
+          style={{ fontSize: "1.5rem" }}
+        />
+        <FormField
+          label='Your Email ID'
+          name='emailFrom'
+          type='email'
+          style={{ fontSize: "1.5rem" }}
+        />
+        <FormField
+          label='Receiver Email Id'
+          name='emailTo'
+          type='email'
+          style={{ fontSize: "1.5rem" }}
+        />
+        <FormField
+          label='Your Phone No.'
+          name='phoneNoFrom'
+          type='number'
+          style={{ fontSize: "1.5rem" }}
+        />
+        <FormField
+          label='Receiver Phone No.'
+          name='phoneNoTo'
+          type='number'
+          style={{ fontSize: "1.5rem" }}
         />
 
         <SubmitButton title='Save' />
