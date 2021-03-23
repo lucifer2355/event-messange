@@ -1,5 +1,11 @@
-import React from "react";
-import { Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import {
+  Typography,
+  Checkbox,
+  CheckboxProps,
+  FormControlLabel,
+} from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 
 import {
@@ -8,6 +14,7 @@ import {
   SubmitButton,
 } from "../forms";
 import { AddEventValues } from "../../store/addEvent/types";
+import { RootState } from "../../store/rootReducer";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string()
@@ -28,6 +35,14 @@ const validationSchema = Yup.object().shape({
 });
 
 const AddEventForm: React.FC = () => {
+  const { auth } = useSelector((state: RootState) => state);
+  const [isWhatsApp, setIsWhatsApp] = useState<boolean>(false);
+  const [isMail, setIsMail] = useState<boolean>(false);
+  const [platforms, setPlatforms] = useState([
+    { isWhatsApp: isWhatsApp },
+    { isMail: isMail },
+  ]);
+
   const initialValue: AddEventValues = {
     title: "",
     message: "",
@@ -35,7 +50,7 @@ const AddEventForm: React.FC = () => {
     emailTo: "",
     phoneNoFrom: null,
     phoneNoTo: null,
-    platforms: [{ whatsApp: false }, { email: false }],
+    platforms: platforms,
   };
 
   const handleSubmit: any = (values: AddEventValues) => {
@@ -66,6 +81,34 @@ const AddEventForm: React.FC = () => {
           rows={4}
           style={{ fontSize: "1.5rem" }}
         />
+
+        <Typography variant='inherit' className='event__form__typography'>
+          Select platforms ( when you send the message on!)
+        </Typography>
+
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={isWhatsApp}
+              onChange={() => setIsWhatsApp((preState) => !preState)}
+              name='isWhatsApp'
+              color='primary'
+            />
+          }
+          label='WhatsApp'
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={isMail}
+              onChange={() => setIsMail((preState) => !preState)}
+              name='isMail'
+              color='primary'
+            />
+          }
+          label='Mail'
+        />
+
         <FormField
           label='Your Email ID'
           name='emailFrom'
