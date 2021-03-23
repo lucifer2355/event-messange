@@ -1,13 +1,18 @@
 import React from "react";
-import AddEventForm from "../../components/AddEventForm/AddEventForm";
 
 import NavBar from "../../components/NavBar/NavBar";
+import AddEventForm from "../../components/AddEventForm/AddEventForm";
+import EventsList from "../../components/EventsList/EventsList";
 
 const HomePage: React.FC = () => {
   return (
     <>
       <NavBar />
-      <AddEventForm />
+
+      <div className='container'>
+        <EventsList />
+        <AddEventForm />
+      </div>
     </>
   );
 };

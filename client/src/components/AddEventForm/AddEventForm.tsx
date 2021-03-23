@@ -1,4 +1,5 @@
 import React from "react";
+import { Typography } from "@material-ui/core";
 import * as Yup from "yup";
 
 import {
@@ -42,7 +43,10 @@ const AddEventForm: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='event__form'>
+      <Typography variant='h4' align='center' gutterBottom>
+        Create Event
+      </Typography>
       <Form
         initialValues={initialValue}
         validationSchema={validationSchema}
