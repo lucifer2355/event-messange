@@ -15,6 +15,7 @@ import {
 } from "../forms";
 import { AddEventValues } from "../../store/addEvent/types";
 import { RootState } from "../../store/rootReducer";
+import classes from "*.module.css";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string()
@@ -93,9 +94,11 @@ const AddEventForm: React.FC = () => {
               onChange={() => setIsWhatsApp((preState) => !preState)}
               name='isWhatsApp'
               color='primary'
+              classes={{ root: "custom-checkbox-root" }}
             />
           }
-          label='WhatsApp'
+          style={{ paddingBottom: "1rem" }}
+          label={<Typography variant='h5'>WhatsApp</Typography>}
         />
         <FormControlLabel
           control={
@@ -104,9 +107,11 @@ const AddEventForm: React.FC = () => {
               onChange={() => setIsMail((preState) => !preState)}
               name='isMail'
               color='primary'
+              classes={{ root: "custom-checkbox-root" }}
             />
           }
-          label='Mail'
+          style={{ paddingBottom: "1rem" }}
+          label={<Typography variant='h5'>Mail</Typography>}
         />
 
         <FormField

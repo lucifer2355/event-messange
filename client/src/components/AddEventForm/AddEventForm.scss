@@ -7,4 +7,13 @@
     font-size: 1.4rem;
     font-weight: 500;
   }
+
+  &__checkbox {
+    font-size: large;
+  }
+}
+
+.custom-checkbox-root .MuiSvgIcon-root {
+  width: 1.8rem;
+  height: 1.8rem;
 }
