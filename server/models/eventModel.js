@@ -10,6 +10,10 @@ const eventSchema = new mongoose.Schema({
     type: String,
     require: [true, "Please write some message"],
   },
+  dateTime: {
+    type: Date,
+    require: [true, "PLease tell your event date & time"],
+  },
   emailFrom: {
     type: String,
     lowercase: true,
