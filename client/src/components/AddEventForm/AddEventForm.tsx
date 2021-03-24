@@ -16,6 +16,8 @@ import {
 } from "../forms";
 import { AddEventValues } from "../../store/addEvent/types";
 import { RootState } from "../../store/rootReducer";
+import * as addEventActions from "../../store/addEvent/addEventAction";
+import { platform } from "os";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string()
@@ -36,14 +38,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const AddEventForm: React.FC = () => {
+  const dispatch = useDispatch();
   const { auth } = useSelector((state: RootState) => state);
   const [isWhatsApp, setIsWhatsApp] = useState<boolean>(false);
   const [isMail, setIsMail] = useState<boolean>(false);
-  const [platforms, setPlatforms] = useState([
-    { isWhatsApp: isWhatsApp },
-    { isMail: isMail },
-  ]);
-  const currentDate = new Date();
 
   const initialValue: AddEventValues = {
     title: "",
@@ -53,11 +51,14 @@ const AddEventForm: React.FC = () => {
     emailTo: "",
     phoneNoFrom: null,
     phoneNoTo: null,
-    platforms: platforms,
+    isMail: false,
+    isWhatsApp: false,
   };
 
-  const handleSubmit: any = (values: AddEventValues) => {
-    console.log("Add event values", values);
+  const handleSubmit: any = async (values: AddEventValues) => {
+    const platforms: object[] = [{ isWhatsApp }, { isMail }];
+
+    await dispatch(addEventActions.createEvent(values, platforms));
   };
 
   return (
@@ -89,10 +90,6 @@ const AddEventForm: React.FC = () => {
           type='datetime-local'
           variant='filled'
           style={{ fontSize: "1.5rem" }}
-
-          // InputLabelProps={{
-          //   shrink: true,
-          // }}
         />
 
         <Typography variant='inherit' className='event__form__typography'>

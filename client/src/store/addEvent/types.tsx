@@ -13,7 +13,8 @@ export interface AddEventValues {
   emailTo: string;
   phoneNoFrom?: number | null;
   phoneNoTo?: number | null;
-  platforms: object[];
+  isMail: boolean;
+  isWhatsApp: boolean;
   //   media: string;
 }
 
@@ -31,7 +32,7 @@ interface AddEventCompleteAction {
 
 export type EventActionType = AddEventStartAction | AddEventCompleteAction;
 
-export type AuthDispatch<ReturnType = void> = ThunkAction<
+export type EventDispatch<ReturnType = void> = ThunkAction<
   ReturnType,
   EventState,
   unknown,
