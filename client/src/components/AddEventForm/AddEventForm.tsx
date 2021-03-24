@@ -90,19 +90,6 @@ const AddEventForm: React.FC = () => {
         <FormControlLabel
           control={
             <Checkbox
-              checked={isWhatsApp}
-              onChange={() => setIsWhatsApp((preState) => !preState)}
-              name='isWhatsApp'
-              color='primary'
-              classes={{ root: "custom-checkbox-root" }}
-            />
-          }
-          style={{ paddingBottom: "1rem" }}
-          label={<Typography variant='h5'>WhatsApp</Typography>}
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
               checked={isMail}
               onChange={() => setIsMail((preState) => !preState)}
               name='isMail'
@@ -113,31 +100,53 @@ const AddEventForm: React.FC = () => {
           style={{ paddingBottom: "1rem" }}
           label={<Typography variant='h5'>Mail</Typography>}
         />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={isWhatsApp}
+              onChange={() => setIsWhatsApp((preState) => !preState)}
+              name='isWhatsApp'
+              color='primary'
+              classes={{ root: "custom-checkbox-root" }}
+            />
+          }
+          style={{ paddingBottom: "1rem" }}
+          label={<Typography variant='h5'>WhatsApp</Typography>}
+        />
 
-        <FormField
-          label='Your Email ID'
-          name='emailFrom'
-          type='email'
-          style={{ fontSize: "1.5rem" }}
-        />
-        <FormField
-          label='Receiver Email Id'
-          name='emailTo'
-          type='email'
-          style={{ fontSize: "1.5rem" }}
-        />
-        <FormField
-          label='Your Phone No.'
-          name='phoneNoFrom'
-          type='number'
-          style={{ fontSize: "1.5rem" }}
-        />
-        <FormField
-          label='Receiver Phone No.'
-          name='phoneNoTo'
-          type='number'
-          style={{ fontSize: "1.5rem" }}
-        />
+        {isMail && (
+          <>
+            <FormField
+              label='Your Email ID'
+              name='emailFrom'
+              type='email'
+              style={{ fontSize: "1.5rem" }}
+            />
+            <FormField
+              label='Receiver Email Id'
+              name='emailTo'
+              type='email'
+              style={{ fontSize: "1.5rem" }}
+            />
+          </>
+        )}
+
+        {isWhatsApp && (
+          <>
+            <FormField
+              label='Your Phone No.'
+              name='phoneNoFrom'
+              type='number'
+              style={{ fontSize: "1.5rem" }}
+            />
+            <FormField
+              label='Receiver Phone No.'
+              name='phoneNoTo'
+              type='number'
+              style={{ fontSize: "1.5rem" }}
+            />
+          </>
+        )}
 
         <SubmitButton title='Save' />
       </Form>
