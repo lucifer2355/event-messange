@@ -2,7 +2,7 @@ import React from "react";
 import { TextField } from "@material-ui/core";
 
 interface AppTextFieldProps {
-  label: string;
+  label?: string;
   name: string;
   type: string;
   style: React.CSSProperties;

@@ -4,6 +4,7 @@ import {
   Checkbox,
   CheckboxProps,
   FormControlLabel,
+  TextField,
 } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
@@ -15,7 +16,6 @@ import {
 } from "../forms";
 import { AddEventValues } from "../../store/addEvent/types";
 import { RootState } from "../../store/rootReducer";
-import classes from "*.module.css";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string()
@@ -43,10 +43,12 @@ const AddEventForm: React.FC = () => {
     { isWhatsApp: isWhatsApp },
     { isMail: isMail },
   ]);
+  const currentDate = new Date();
 
   const initialValue: AddEventValues = {
     title: "",
     message: "",
+    dateTime: new Date(),
     emailFrom: "",
     emailTo: "",
     phoneNoFrom: null,
@@ -81,6 +83,16 @@ const AddEventForm: React.FC = () => {
           multiline={true}
           rows={4}
           style={{ fontSize: "1.5rem" }}
+        />
+        <FormField
+          name='dateTime'
+          type='datetime-local'
+          variant='filled'
+          style={{ fontSize: "1.5rem" }}
+
+          // InputLabelProps={{
+          //   shrink: true,
+          // }}
         />
 
         <Typography variant='inherit' className='event__form__typography'>

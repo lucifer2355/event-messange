@@ -8,6 +8,7 @@ export interface EventState {
 export interface AddEventValues {
   title: string;
   message: string;
+  dateTime: Date;
   emailFrom?: string;
   emailTo: string;
   phoneNoFrom?: number | null;

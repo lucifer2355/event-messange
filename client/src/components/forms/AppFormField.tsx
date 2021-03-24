@@ -4,9 +4,10 @@ import { useFormikContext } from "formik";
 import AppTextField from "../AppTextField/AppTextField";
 
 interface AppFormFieldProps {
-  label: string;
+  label?: string;
   name: string;
   type: string;
+  variant?: "filled" | "outlined" | "standard";
   width?: number;
   multiline?: boolean;
   rows?: number;
@@ -19,6 +20,7 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
   name,
   width,
   type,
+  variant,
   rows,
   multiline,
   style,
@@ -27,7 +29,6 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
   const { setFieldValue, errors, values } = useFormikContext();
   const formValues: any = values;
   const formErrors: any = errors;
-  console.log(style);
 
   return (
     <>
@@ -36,6 +37,7 @@ const AppFormField: React.FC<AppFormFieldProps> = ({
         label={label}
         name={name}
         type={type}
+        variant={variant}
         multiline={multiline}
         rows={4}
         style={style}
