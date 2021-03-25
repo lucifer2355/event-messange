@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 
 const eventSchema = new mongoose.Schema({
+  userId: {
+    type: Number,
+  },
   title: {
     type: String,
     require: [true, "Please tell event title"],

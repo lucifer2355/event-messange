@@ -29,6 +29,12 @@ exports.updateOne = (Model) =>
 
 exports.createOne = (Model) =>
   catchAsync(async (req, res, next) => {
+    let token;
+    if (req.headers.authorization) {
+      token = req.headers.authorization;
+    }
+
+    console.log("token", token);
     const doc = await Model.create(req.body);
 
     res.status(200).json({
