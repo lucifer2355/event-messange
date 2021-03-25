@@ -3,7 +3,7 @@ const validator = require("validator");
 
 const eventSchema = new mongoose.Schema({
   userId: {
-    type: Number,
+    type: String,
   },
   title: {
     type: String,
