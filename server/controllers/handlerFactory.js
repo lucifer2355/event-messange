@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
@@ -34,8 +35,17 @@ exports.createOne = (Model) =>
       token = req.headers.authorization;
     }
 
-    console.log("token", token);
-    const doc = await Model.create(req.body);
+    const doc = await Model.create({
+      userId: jwt.decode(token).id,
+      title: req.body.title,
+      message: req.body.message,
+      dateTime: req.body.dateTime,
+      emailFrom: req.body.emailFrom,
+      emailTo: req.body.emailTo,
+      phoneNoFrom: req.body.phoneNoFrom,
+      phoneNoTo: req.body.phoneNoTo,
+      platforms: req.body.platforms,
+    });
 
     res.status(200).json({
       status: "success",
