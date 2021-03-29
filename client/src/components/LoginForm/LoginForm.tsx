@@ -28,7 +28,6 @@ const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { auth } = useSelector((state: RootState) => state);
-  console.log("auth", auth);
 
   const handleSubmit: any = async (values: LoginValues) => {
     await dispatch(authActions.login(values, history));
