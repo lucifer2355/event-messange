@@ -32,6 +32,7 @@ export const createEvent = (
     {
       headers: {
         Authorization: token,
+        "Content-Type": "application/json",
       },
     }
   );

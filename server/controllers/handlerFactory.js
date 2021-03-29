@@ -35,6 +35,8 @@ exports.createOne = (Model) =>
       token = req.headers.authorization;
     }
 
+    console.log("token", token);
+
     const doc = await Model.create({
       userId: jwt.decode(token).id,
       title: req.body.title,

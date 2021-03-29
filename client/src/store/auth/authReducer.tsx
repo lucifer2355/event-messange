@@ -23,7 +23,7 @@ export const authReducer = (
     case LOGIN_START:
       return {
         ...state,
-        isLoading: true,
+        isLoading: false,
         loginError: null,
       };
 

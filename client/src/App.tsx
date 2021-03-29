@@ -12,7 +12,6 @@ import HomePage from "./pages/HomePage/HomePage";
 
 const App: React.FC = () => {
   const token = localStorage.getItem("token");
-  console.log("token", token);
 
   return (
     <Router>
