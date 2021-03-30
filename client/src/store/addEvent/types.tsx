@@ -10,7 +10,7 @@ export interface AddEventValues {
   message: string;
   dateTime: Date;
   emailFrom?: string;
-  emailTo: string;
+  emailTo?: string;
   phoneNoFrom?: number | null;
   phoneNoTo?: number | null;
   isMail: boolean;
