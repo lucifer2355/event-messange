@@ -3,11 +3,15 @@ const {
   createEvent,
   updateEvent,
   deleteEvent,
+  getAllEvents,
 } = require("../controllers/eventController");
 
 const router = express.Router();
 
-router.route("/").post(createEvent);
+router
+  .route("/")
+  .get(getAllEvents)
+  .post(createEvent);
 router
   .route("/:id")
   .patch(updateEvent)
