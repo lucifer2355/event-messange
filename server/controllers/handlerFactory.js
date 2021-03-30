@@ -35,8 +35,6 @@ exports.createOne = (Model) =>
       token = req.headers.authorization;
     }
 
-    console.log("token", token);
-
     const doc = await Model.create({
       userId: jwt.decode(token).id,
       title: req.body.title,
@@ -66,5 +64,22 @@ exports.getOne = (Model, popOptions) =>
     res.status(200).json({
       status: "success",
       data: doc,
+    });
+  });
+
+exports.getAll = (Model) =>
+  catchAsync(async (req, res, next) => {
+    let token;
+    if (req.headers.authorization) {
+      token = req.headers.authorization;
+    }
+
+    const doc = await Model.find({ userId: jwt.decode(token).id });
+
+    res.status(200).json({
+      status: "success",
+      requestTime: req.requestTime,
+      results: doc.length,
+      events: doc,
     });
   });
