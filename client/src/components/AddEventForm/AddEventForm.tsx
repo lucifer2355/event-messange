@@ -60,9 +60,11 @@ const AddEventForm: React.FC = () => {
     { resetForm }: any
   ) => {
     const platforms: object[] = [{ isWhatsApp }, { isMail }];
-    // await dispatch(addEventActions.createEvent(values, platforms));
+    await dispatch(addEventActions.createEvent(values, platforms));
 
-    resetForm({ isMail: false });
+    setIsMail(false);
+    setIsWhatsApp(false);
+    resetForm({});
   };
 
   return (
