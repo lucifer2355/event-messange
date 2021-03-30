@@ -17,21 +17,31 @@ const EventCard: React.FC<AddEventValues> = ({
   isWhatsApp,
 }) => {
   return (
-    <div>
-      <Card className='card'>
-        <CardContent>
-          <Typography variant='h2' gutterBottom>
+    <Card className='card'>
+      <CardContent>
+        <div className='card__title-row'>
+          <Typography
+            variant='h3'
+            gutterBottom
+            style={{ marginRight: "0.5rem" }}
+          >
             {title}
           </Typography>
-          <Typography variant='h6'>{dateTime}</Typography>
-          <Typography variant='body2' color='textSecondary' component='p'>
-            {message}
+          <Typography
+            variant='h5'
+            color='textSecondary'
+            style={{ marginBottom: "0.7rem" }}
+          >
+            {dateTime}
           </Typography>
-          {isMail && <Typography variant='h6'>isMail</Typography>}
-          {isWhatsApp && <Typography variant='h6'>isWhatsApp</Typography>}
-        </CardContent>
-      </Card>
-    </div>
+        </div>
+        <Typography variant='h5' color='textSecondary' component='p'>
+          {message}
+        </Typography>
+        {isMail && <Typography variant='h6'>isMail</Typography>}
+        {isWhatsApp && <Typography variant='h6'>isWhatsApp</Typography>}
+      </CardContent>
+    </Card>
   );
 };
 

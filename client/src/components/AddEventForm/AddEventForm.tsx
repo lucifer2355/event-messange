@@ -46,7 +46,7 @@ const AddEventForm: React.FC = () => {
   const initialValue: AddEventValues = {
     title: "",
     message: "",
-    dateTime: new Date(),
+    dateTime: 0,
     emailFrom: "",
     emailTo: "",
     phoneNoFrom: null,

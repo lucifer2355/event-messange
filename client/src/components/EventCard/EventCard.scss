@@ -1,0 +1,8 @@
+.card {
+  max-width: 35rem;
+
+  &__title-row {
+    display: flex;
+    align-items: flex-end;
+  }
+}
