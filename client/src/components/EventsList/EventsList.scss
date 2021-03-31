@@ -1,0 +1,9 @@
+.event__list {
+  flex: 0 0 68%;
+
+  &__cards-view {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
