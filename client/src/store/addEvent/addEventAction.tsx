@@ -14,9 +14,6 @@ export const createEvent = (
 ): EventDispatch => async (dispatch) => {
   dispatch({ type: ADD_EVENT_START });
 
-  console.log(values);
-  console.log(platforms);
-
   const { data } = await axios.post(
     "/api/event",
     {

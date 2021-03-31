@@ -16,9 +16,9 @@ interface GetEventsCompleteAction {
 
 export type GetEventActionType = GetEventsStartAction | GetEventsCompleteAction;
 
-export type EventDispatch<ReturnType = void> = ThunkAction<
+export type GetEventDispatch<ReturnType = void> = ThunkAction<
   ReturnType,
   EventState,
   unknown,
-  EventActionType
+  GetEventActionType
 >;
