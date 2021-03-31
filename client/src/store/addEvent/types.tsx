@@ -1,9 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 
-export interface EventState {
-  isLoading: boolean;
-  events: object[];
-}
+import { EventState } from "../../../types";
 
 export interface AddEventValues {
   title: string;
