@@ -1,6 +1,7 @@
 import { ThunkAction } from "redux-thunk";
 
 import { EventState } from "../../../types";
+import { AddEventValues } from "../addEvent/types";
 
 export const GET_EVENTS_START = "GET_EVENTS_START";
 export const GET_EVENTS_COMPLETE = "GET_EVENT_COMPLETE";
