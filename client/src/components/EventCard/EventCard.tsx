@@ -9,13 +9,7 @@ import {
 
 import { AddEventValues } from "../../store/addEvent/types";
 
-const EventCard: React.FC<AddEventValues> = ({
-  title,
-  message,
-  dateTime,
-  isMail,
-  isWhatsApp,
-}) => {
+const EventCard: React.FC<AddEventValues> = ({ title, message, dateTime }) => {
   return (
     <Card className='card'>
       <CardContent>
@@ -38,8 +32,10 @@ const EventCard: React.FC<AddEventValues> = ({
         <Typography variant='h5' color='textSecondary' component='p'>
           {message}
         </Typography>
-        {isMail && <Typography variant='h6'>isMail</Typography>}
-        {isWhatsApp && <Typography variant='h6'>isWhatsApp</Typography>}
+        {/* {platforms.isMail && <Typography variant='h6'>isMail</Typography>}
+        {platforms.isWhatsApp && (
+          <Typography variant='h6'>isWhatsApp</Typography>
+        )} */}
       </CardContent>
     </Card>
   );

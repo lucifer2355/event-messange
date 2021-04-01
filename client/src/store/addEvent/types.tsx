@@ -10,8 +10,7 @@ export interface AddEventValues {
   emailTo?: string;
   phoneNoFrom?: number | null;
   phoneNoTo?: number | null;
-  isMail: boolean;
-  isWhatsApp: boolean;
+  platforms?: { isWhatsApp: boolean; isMail: boolean }[];
   //   media: string;
 }
 

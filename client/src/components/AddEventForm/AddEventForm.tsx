@@ -51,8 +51,6 @@ const AddEventForm: React.FC = () => {
     emailTo: "",
     phoneNoFrom: null,
     phoneNoTo: null,
-    isMail: false,
-    isWhatsApp: false,
   };
 
   const handleSubmit: any = async (
