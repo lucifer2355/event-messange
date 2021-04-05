@@ -2,14 +2,13 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 
 import EventCard from "../EventCard/EventCard";
-import { AddEventValues } from "../../store/addEvent/types";
 
 interface EventsListProps {
-  data: any;
+  data: {}[];
 }
 
 const EventsList: React.FC<EventsListProps> = ({ data }) => {
-  console.log(data);
+  console.log(typeof data);
 
   return (
     <div className='event__list'>
