@@ -8,7 +8,7 @@ interface EventsListProps {
 }
 
 const EventsList: React.FC<EventsListProps> = ({ data }) => {
-  console.log(typeof data);
+  // console.log(data);
 
   return (
     <div className='event__list'>
@@ -20,6 +20,7 @@ const EventsList: React.FC<EventsListProps> = ({ data }) => {
                 title={event.title}
                 message={event.message}
                 dateTime={event.dateTime}
+                platforms={event?.platforms}
               />
             </Grid>
           ))}
