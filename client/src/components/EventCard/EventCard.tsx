@@ -6,6 +6,7 @@ import {
   CardActions,
   Typography,
 } from "@material-ui/core";
+import moment from "moment";
 
 import { AddEventValues } from "../../store/addEvent/types";
 
@@ -26,7 +27,7 @@ const EventCard: React.FC<AddEventValues> = ({ title, message, dateTime }) => {
             color='textSecondary'
             style={{ marginBottom: "0.7rem" }}
           >
-            {dateTime}
+            {moment(dateTime).format("DD, MMMM")}
           </Typography>
         </div>
         <Typography variant='h5' color='textSecondary' component='p'>
