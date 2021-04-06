@@ -25,6 +25,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.16",
     "nodemon": "^2.0.7",
+    "twilio": "^3.59.0",
     "validator": "^13.5.2"
   },
   "engines": {
