@@ -5,11 +5,11 @@ const app = require("./index");
 
 dotenv.config({ path: "../config.env" });
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_TOKEN;
-
 // eslint-disable-next-line import/order
-const client = require("twilio")(accountSid, authToken);
+const client = require("twilio")(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_TOKEN
+);
 
 client.messages
   .create({
