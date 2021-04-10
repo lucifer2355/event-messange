@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const sendEmail = require("../utils/email");
 
 const signToken = (id, email, firstName) =>
   jwt.sign({ id, email, firstName }, process.env.JWT_SECRET, {
@@ -91,4 +92,17 @@ exports.protect = catchAsync(async (req, res, next) => {
   req.user = freshUser;
 
   next();
+});
+
+exports.sendEmail = catchAsync(async (req, res, next) => {
+  await sendEmail({
+    email: "dgajjar999@gmail.com",
+    subject: "Testing email",
+    message: "This is testing mail ",
+  });
+
+  res.status(200).json({
+    status: "success",
+    message: "email is sended",
+  });
 });
