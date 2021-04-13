@@ -1,10 +1,10 @@
-const crypto = require("crypto");
+// const crypto = require("crypto");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
-const sendEmail = require("../utils/email");
+const Email = require("../utils/email");
 
 const signToken = (id, email, firstName) =>
   jwt.sign({ id, email, firstName }, process.env.JWT_SECRET, {
@@ -37,6 +37,9 @@ const createSendToken = (user, statusCode, res) => {
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body);
   console.log(newUser);
+
+  const url = 0;
+  await new Email(newUser, url).sendWelcome();
 
   createSendToken(newUser, 201, res);
 });
@@ -95,14 +98,13 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 
 exports.sendEmail = catchAsync(async (req, res, next) => {
-  await sendEmail({
-    email: "dgajjar999@gmail.com",
-    subject: "Testing email",
-    message: "This is testing mail ",
-  });
-
-  res.status(200).json({
-    status: "success",
-    message: "email is sended",
-  });
+  // await sendEmail({
+  //   email: "dgajjar999@gmail.com",
+  //   subject: "Testing email",
+  //   message: "This is testing mail ",
+  // });
+  // res.status(200).json({
+  //   status: "success",
+  //   message: "email is sended",
+  // });
 });

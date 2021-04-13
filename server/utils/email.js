@@ -5,12 +5,12 @@ const htmlToText = require("html-to-text");
 module.exports = class Email {
   constructor(user, url) {
     this.to = user.email;
-    this.firstName = user.name.split(" ")[0];
+    this.firstName = user.firstName;
     this.url = url;
     this.from = `Dhruvil Gajjar <${process.env.EMAIL_FROM}>`;
   }
 
-  createTransport() {
+  newTransport() {
     if (process.env.NODE_ENV === "production") {
       return 1;
     }
@@ -25,9 +25,9 @@ module.exports = class Email {
     });
   }
 
-  send(template, subject) {
+  async send(template, subject) {
     //! Send the actual email
-    const html = pug.renderFile(`${__dirname}/../../views/${template}.pug`, {
+    const html = pug.renderFile(`${__dirname}/../views/${template}.pug`, {
       filename: this.firstName,
       url: this.url,
       subject,
@@ -43,26 +43,24 @@ module.exports = class Email {
     };
 
     //! Create transport and send email
+    await this.newTransport().sendMail(mailOptions);
   }
 
-  sendWelcome() {
-    this.send("welcome", "Welcome to the family! 😊");
+  async sendWelcome() {
+    await this.send("emailTemplate", "Welcome to the family! 😊");
   }
 };
 
-const sendEmail = async (options) => {
-  //! Create transporter
-  //   const transpoter = nodemailer.createTransport({
-  //     service: "Gmail",
-  //     auth: {
-  //       user: process.env.EMAIL_USERNAME,
-  //       pass: process.env.EMAIL_PASSWORD,
-  //     },
-  //*     Activate in gmail 'less secure app' option
-  //   });
-
-  //! Define the email options
-
-  //! Actually send the email
-  await transporter.sendMail(mailOptions);
-};
+// const sendEmail = async (options) => {
+//! Create transporter
+//   const transpoter = nodemailer.createTransport({
+//     service: "Gmail",
+//     auth: {
+//       user: process.env.EMAIL_USERNAME,
+//       pass: process.env.EMAIL_PASSWORD,
+//     },
+//*     Activate in gmail 'less secure app' option
+//   });
+//! Define the email options
+//! Actually send the email
+// };
