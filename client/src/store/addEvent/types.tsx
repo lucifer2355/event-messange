@@ -6,12 +6,7 @@ export interface AddEventValues {
   title: string;
   message: string;
   dateTime: number;
-  emailFrom?: string;
-  emailTo?: string;
-  phoneNoFrom?: number | null;
-  phoneNoTo?: number | null;
-  platforms?: { isWhatsApp: boolean; isMail: boolean }[];
-  //   media: string;
+  email: string;
 }
 
 export const ADD_EVENT_START = "ADD_EVENT_START";

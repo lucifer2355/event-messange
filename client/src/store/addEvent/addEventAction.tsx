@@ -8,10 +8,9 @@ import {
 
 const token = localStorage.getItem("token");
 
-export const createEvent = (
-  values: AddEventValues,
-  platforms: object[]
-): EventDispatch => async (dispatch) => {
+export const createEvent = (values: AddEventValues): EventDispatch => async (
+  dispatch
+) => {
   dispatch({ type: ADD_EVENT_START });
 
   const { data } = await axios.post(
@@ -20,11 +19,7 @@ export const createEvent = (
       title: values.title,
       message: values.message,
       dateTime: values.dateTime,
-      emailFrom: values.emailFrom,
-      emailTo: values.emailTo,
-      phoneNoFrom: values.phoneNoFrom,
-      phoneNoTo: values.phoneNoTo,
-      platforms,
+      email: values.email,
     },
     {
       headers: {

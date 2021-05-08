@@ -26,15 +26,9 @@ const validationSchema = Yup.object().shape({
   message: Yup.string()
     .label("Message")
     .required(),
-  emailFrom: Yup.string()
-    .email()
-    .label("Email From"),
-  emailTo: Yup.string()
+  email: Yup.string()
     .email()
     .label("Email To"),
-  phoneNoFrom: Yup.number().label("Phone No. From"),
-  phoneNoTo: Yup.number().label("Phone No. To"),
-  platforms: Yup.array().label("Platforms"),
 });
 
 const AddEventForm: React.FC = () => {
@@ -47,18 +41,14 @@ const AddEventForm: React.FC = () => {
     title: "",
     message: "",
     dateTime: 0,
-    emailFrom: "",
-    emailTo: "",
-    phoneNoFrom: null,
-    phoneNoTo: null,
+    email: "",
   };
 
   const handleSubmit: any = async (
     values: AddEventValues,
     { resetForm }: any
   ) => {
-    const platforms: object[] = [{ isWhatsApp }, { isMail }];
-    await dispatch(addEventActions.createEvent(values, platforms));
+    await dispatch(addEventActions.createEvent(values));
 
     setIsMail(false);
     setIsWhatsApp(false);
@@ -95,71 +85,12 @@ const AddEventForm: React.FC = () => {
           variant='filled'
           style={{ fontSize: "1.5rem" }}
         />
-
-        <Typography variant='inherit' className='event__form__typography'>
-          Select platforms ( when you send the message on!)
-        </Typography>
-
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={isMail}
-              onChange={() => setIsMail((preState) => !preState)}
-              name='isMail'
-              color='primary'
-              classes={{ root: "custom-checkbox-root" }}
-            />
-          }
-          style={{ paddingBottom: "1rem" }}
-          label={<Typography variant='h5'>Mail</Typography>}
+        <FormField
+          label='Your Email ID'
+          name='email'
+          type='email'
+          style={{ fontSize: "1.5rem" }}
         />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={isWhatsApp}
-              onChange={() => setIsWhatsApp((preState) => !preState)}
-              name='isWhatsApp'
-              color='primary'
-              classes={{ root: "custom-checkbox-root" }}
-            />
-          }
-          style={{ paddingBottom: "1rem" }}
-          label={<Typography variant='h5'>WhatsApp</Typography>}
-        />
-
-        {isMail && (
-          <>
-            <FormField
-              label='Your Email ID'
-              name='emailFrom'
-              type='email'
-              style={{ fontSize: "1.5rem" }}
-            />
-            <FormField
-              label='Receiver Email Id'
-              name='emailTo'
-              type='email'
-              style={{ fontSize: "1.5rem" }}
-            />
-          </>
-        )}
-
-        {isWhatsApp && (
-          <>
-            <FormField
-              label='Your Phone No.'
-              name='phoneNoFrom'
-              type='number'
-              style={{ fontSize: "1.5rem" }}
-            />
-            <FormField
-              label='Receiver Phone No.'
-              name='phoneNoTo'
-              type='number'
-              style={{ fontSize: "1.5rem" }}
-            />
-          </>
-        )}
 
         <SubmitButton title='Save' />
       </Form>

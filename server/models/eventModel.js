@@ -17,24 +17,10 @@ const eventSchema = new mongoose.Schema({
     type: Date,
     require: [true, "PLease tell your event date & time"],
   },
-  emailFrom: {
+  email: {
     type: String,
     lowercase: true,
     validator: [validator.isEmail, "Please provide valid email id"],
-  },
-  emailTo: {
-    type: String,
-    lowercase: true,
-    validator: [validator.isEmail, "Please provide valid email id"],
-  },
-  phoneNoFrom: {
-    type: Number,
-    minLength: 10,
-    maxLength: 10,
-  },
-  platforms: {
-    type: Array,
-    require: [true, "Please select platforms"],
   },
   active: {
     type: Boolean,
