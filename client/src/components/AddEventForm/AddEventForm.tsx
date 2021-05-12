@@ -81,7 +81,7 @@ const AddEventForm: React.FC = () => {
         />
         <FormField
           name='dateTime'
-          type='datetime-local'
+          type='date'
           variant='filled'
           style={{ fontSize: "1.5rem" }}
         />
