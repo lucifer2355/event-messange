@@ -4,7 +4,7 @@ import { Grid } from "@material-ui/core";
 import EventCard from "../EventCard/EventCard";
 
 interface EventsListProps {
-  data: {}[];
+  data: any;
 }
 
 const EventsList: React.FC<EventsListProps> = ({ data }) => {
@@ -20,7 +20,6 @@ const EventsList: React.FC<EventsListProps> = ({ data }) => {
                 title={event.title}
                 message={event.message}
                 dateTime={event.dateTime}
-                platforms={event?.platforms}
               />
             </Grid>
           ))}

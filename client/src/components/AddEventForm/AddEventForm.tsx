@@ -86,7 +86,7 @@ const AddEventForm: React.FC = () => {
           style={{ fontSize: "1.5rem" }}
         />
         <FormField
-          label='Your Email ID'
+          label='Recipient Email ID'
           name='email'
           type='email'
           style={{ fontSize: "1.5rem" }}
