@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const schedule = require("node-schedule");
+const moment = require("moment");
 
+const Event = require("./models/eventModel");
 const AppError = require("./utils/appError");
 const userRouter = require("./routes/userRoutes");
 const eventRouter = require("./routes/eventRoutes");
@@ -15,8 +17,17 @@ app.use(express.json({ limit: "30mb" }));
 app.use(cors());
 
 //! SEND EVENT MAIL
-const job = schedule.scheduleJob("*/5 * * * * *", () => {
-  // console.log("Today is recognized by Rebecca Black!");
+const job = schedule.scheduleJob("*/5 * * * * *", async () => {
+  const today = moment().startOf("day");
+  const data = await Event.find({
+    dateTime: {
+      $gte: today.toDate(),
+      $lte: moment(today)
+        .endOf("day")
+        .toDate(),
+    },
+  });
+  // console.log(data);
 });
 
 //! ROUTES
