@@ -40,11 +40,7 @@ exports.createOne = (Model) =>
       title: req.body.title,
       message: req.body.message,
       dateTime: req.body.dateTime,
-      emailFrom: req.body.emailFrom,
-      emailTo: req.body.emailTo,
-      phoneNoFrom: req.body.phoneNoFrom,
-      phoneNoTo: req.body.phoneNoTo,
-      platforms: req.body.platforms,
+      email: req.body.email,
     });
 
     res.status(200).json({
