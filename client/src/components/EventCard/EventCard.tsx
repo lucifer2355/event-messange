@@ -5,6 +5,7 @@ import {
   CardContent,
   CardActions,
   Typography,
+  Button,
 } from "@material-ui/core";
 import moment from "moment";
 
@@ -38,6 +39,14 @@ const EventCard: React.FC<EventCardProps> = ({ title, message, dateTime }) => {
           {message}
         </Typography>
       </CardContent>
+      <CardActions>
+        <Button color='primary' style={{ fontSize: "1.2rem" }}>
+          Edit
+        </Button>
+        <Button color='primary' style={{ fontSize: "1.2rem" }}>
+          Delete
+        </Button>
+      </CardActions>
     </Card>
   );
 };
