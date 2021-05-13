@@ -3,10 +3,10 @@ const pug = require("pug");
 const htmlToText = require("html-to-text");
 
 module.exports = class Email {
-  constructor(user, url) {
+  constructor(user) {
     this.to = user.email;
     this.firstName = user.firstName;
-    this.url = url;
+    this.subject = user.message;
     this.from = `Dhruvil Gajjar <${process.env.EMAIL_FROM}>`;
   }
 
@@ -30,7 +30,6 @@ module.exports = class Email {
     //! Send the actual email
     const html = pug.renderFile(`${__dirname}/../views/${template}.pug`, {
       firstName: this.firstName,
-      url: this.url,
       subject,
     });
 
@@ -49,6 +48,10 @@ module.exports = class Email {
 
   async sendWelcome() {
     await this.send("emailTemplate", "Welcome to the family! 😊");
+  }
+
+  async sendEventMessage() {
+    await this.send("emailTemplate", this.subject);
   }
 };
 
