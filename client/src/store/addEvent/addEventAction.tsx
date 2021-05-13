@@ -18,7 +18,7 @@ export const createEvent = (values: AddEventValues): EventDispatch => async (
     {
       title: values.title,
       message: values.message,
-      dateTime: values.dateTime,
+      dateTime: new Date(values.dateTime).getTime(),
       email: values.email,
     },
     {

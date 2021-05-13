@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(express.json({ limit: "30mb" }));
 app.use(cors());
 
+//! SEND EVENT MAIL
 const job = schedule.scheduleJob("*/5 * * * * *", () => {
   // console.log("Today is recognized by Rebecca Black!");
 });
