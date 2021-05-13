@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Typography,
-  Checkbox,
-  CheckboxProps,
-  FormControlLabel,
-  TextField,
-} from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 
@@ -14,10 +8,9 @@ import {
   AppFormField as FormField,
   SubmitButton,
 } from "../forms";
-import { AddEventValues } from "../../store/addEvent/types";
+import { AddEventValues } from "../../store/event/types";
 import { RootState } from "../../store/rootReducer";
-import * as addEventActions from "../../store/addEvent/addEventAction";
-import { platform } from "os";
+import * as addEventActions from "../../store/event/eventAction";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string()
@@ -34,8 +27,6 @@ const validationSchema = Yup.object().shape({
 const AddEventForm: React.FC = () => {
   const dispatch = useDispatch();
   const { auth } = useSelector((state: RootState) => state);
-  const [isWhatsApp, setIsWhatsApp] = useState<boolean>(false);
-  const [isMail, setIsMail] = useState<boolean>(false);
 
   const initialValue: AddEventValues = {
     title: "",
@@ -50,8 +41,6 @@ const AddEventForm: React.FC = () => {
   ) => {
     await dispatch(addEventActions.createEvent(values));
 
-    setIsMail(false);
-    setIsWhatsApp(false);
     resetForm({});
   };
 

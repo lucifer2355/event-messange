@@ -3,6 +3,7 @@ import {
   AddEventValues,
   ADD_EVENT_COMPLETE,
   ADD_EVENT_START,
+  DELETE_EVENT_START,
   EventDispatch,
 } from "./types";
 
@@ -36,4 +37,8 @@ export const createEvent = (values: AddEventValues): EventDispatch => async (
   } catch (error) {
     console.warn("Add Event Error", error);
   }
+};
+
+export const deleteEvent = (id: string): EventDispatch => async (dispatch) => {
+  dispatch({ type: DELETE_EVENT_START });
 };

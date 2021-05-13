@@ -11,6 +11,8 @@ export interface AddEventValues {
 
 export const ADD_EVENT_START = "ADD_EVENT_START";
 export const ADD_EVENT_COMPLETE = "ADD_EVENT_COMPLETE";
+export const DELETE_EVENT_START = "DELETE_EVENT_START";
+export const DELETE_EVENT_COMPLETE = "DELETE_EVENT_COMPLETE";
 
 interface AddEventStartAction {
   type: typeof ADD_EVENT_START;
@@ -21,7 +23,19 @@ interface AddEventCompleteAction {
   payload: object[];
 }
 
-export type EventActionType = AddEventStartAction | AddEventCompleteAction;
+interface DeleteEventStartAction {
+  type: typeof DELETE_EVENT_START;
+}
+
+interface DeleteEventCompleteAction {
+  type: typeof DELETE_EVENT_COMPLETE;
+}
+
+export type EventActionType =
+  | AddEventStartAction
+  | AddEventCompleteAction
+  | DeleteEventStartAction
+  | DeleteEventCompleteAction;
 
 export type EventDispatch<ReturnType = void> = ThunkAction<
   ReturnType,
