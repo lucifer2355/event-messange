@@ -3,10 +3,11 @@ const pug = require("pug");
 const htmlToText = require("html-to-text");
 
 module.exports = class Email {
-  constructor(user) {
-    this.to = user.email;
-    this.firstName = user.firstName;
-    this.subject = user.message;
+  constructor(email, firstName, title, message) {
+    this.to = email;
+    this.firstName = firstName;
+    this.subject = title;
+    this.message = message;
     this.from = `Dhruvil Gajjar <${process.env.EMAIL_FROM}>`;
   }
 
@@ -25,12 +26,12 @@ module.exports = class Email {
     });
   }
 
-  async send(template, subject) {
-    console.log("firstName", this.firstName);
+  async send(template, subject, message) {
     //! Send the actual email
     const html = pug.renderFile(`${__dirname}/../views/${template}.pug`, {
       firstName: this.firstName,
       subject,
+      message,
     });
 
     //! Define email option
@@ -47,11 +48,15 @@ module.exports = class Email {
   }
 
   async sendWelcome() {
-    await this.send("emailTemplate", "Welcome to the family! 😊");
+    await this.send(
+      "welcomeEmailTemplate",
+      "Welcome to the family! 😊",
+      "Welcome to the family, we're glad to have you 🎉🙏"
+    );
   }
 
   async sendEventMessage() {
-    await this.send("emailTemplate", this.subject);
+    await this.send("birthdayEmailTemplate", this.subject, this.message);
   }
 };
 
