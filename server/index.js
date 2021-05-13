@@ -19,7 +19,7 @@ app.use(express.json({ limit: "30mb" }));
 app.use(cors());
 
 //! SEND EVENT MAIL
-const job = schedule.scheduleJob("*/5 * * * * *", async () => {
+const job = schedule.scheduleJob("* */24 * * * *", async () => {
   const today = moment().startOf("day");
   const data = await Event.find({
     dateTime: {
