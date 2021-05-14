@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const schedule = require("node-schedule");
 const moment = require("moment");
+const compression = require("compression");
 
 const Event = require("./models/eventModel");
 const User = require("./models/userModel");
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(express.json());
 //* Body parser, reading data from body into req.body
 app.use(express.json({ limit: "30mb" }));
+app.use(compression());
 
 //! SEND EVENT MAIL
 const job = schedule.scheduleJob("* */24 * * * *", async () => {
