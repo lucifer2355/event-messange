@@ -17,6 +17,7 @@ const EventsList: React.FC<EventsListProps> = ({ data }) => {
           data.map((event: any) => (
             <Grid item xs={4} sm={12} md={6}>
               <EventCard
+                id={event._id}
                 title={event.title}
                 message={event.message}
                 dateTime={event.dateTime}

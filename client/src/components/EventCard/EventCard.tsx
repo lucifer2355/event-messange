@@ -1,21 +1,35 @@
 import React from "react";
 import {
   Card,
-  CardActionArea,
   CardContent,
   CardActions,
   Typography,
   Button,
 } from "@material-ui/core";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+
+import { deleteEvent } from "../../store/event/eventAction";
 
 interface EventCardProps {
+  id: string;
   title: string;
   message: string;
   dateTime: Date;
 }
 
-const EventCard: React.FC<EventCardProps> = ({ title, message, dateTime }) => {
+const EventCard: React.FC<EventCardProps> = ({
+  id,
+  title,
+  message,
+  dateTime,
+}) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = async (id: string) => {
+    await dispatch(deleteEvent(id));
+  };
+
   return (
     <Card className='card'>
       <CardContent>
@@ -43,7 +57,11 @@ const EventCard: React.FC<EventCardProps> = ({ title, message, dateTime }) => {
         <Button color='primary' style={{ fontSize: "1.2rem" }}>
           Edit
         </Button>
-        <Button color='primary' style={{ fontSize: "1.2rem" }}>
+        <Button
+          color='primary'
+          style={{ fontSize: "1.2rem" }}
+          onClick={() => handleDelete(id)}
+        >
           Delete
         </Button>
       </CardActions>

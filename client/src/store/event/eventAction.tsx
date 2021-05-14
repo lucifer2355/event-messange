@@ -46,10 +46,9 @@ export const deleteEvent = (id: string): EventDispatch => async (dispatch) => {
 
     const { data } = await axios.post(
       "api/event",
-      { id: id },
+      { id },
       {
         headers: {
-          Authorization: token,
           "Content-Type": "application/json",
         },
       }
