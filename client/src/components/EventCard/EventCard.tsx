@@ -27,6 +27,8 @@ const EventCard: React.FC<EventCardProps> = ({
   const dispatch = useDispatch();
 
   const handleDelete = async (id: string) => {
+    console.log(id);
+
     await dispatch(deleteEvent(id));
   };
 

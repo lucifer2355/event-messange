@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     getEventsFn();
-  }, []);
+  }, [getEvents.isLoading]);
 
   return (
     <>

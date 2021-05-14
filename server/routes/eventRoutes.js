@@ -12,9 +12,7 @@ router
   .route("/")
   .get(getAllEvents)
   .post(createEvent);
-router
-  .route("/:id")
-  .patch(updateEvent)
-  .post(deleteEvent);
+router.route("/delete").post(deleteEvent);
+router.route("/:id").patch(updateEvent);
 
 module.exports = router;
