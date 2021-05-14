@@ -9,7 +9,7 @@ import * as getEventsActions from "../../store/getEvents/getEventsAction";
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch();
-  const { getEvents } = useSelector((state: RootState) => state);
+  const { getEvents, event } = useSelector((state: RootState) => state);
 
   const getEventsFn = async () => {
     await dispatch(getEventsActions.getEvents());
