@@ -1,11 +1,11 @@
-import { EventState } from "../../../types";
+import { GetEventState } from "../../../types";
 import {
   GetEventActionType,
   GET_EVENTS_COMPLETE,
   GET_EVENTS_START,
 } from "./types";
 
-const initialState: EventState = {
+const initialState: GetEventState = {
   isLoading: false,
   events: [],
 };
@@ -13,7 +13,7 @@ const initialState: EventState = {
 export const getEventsReducer = (
   state = initialState,
   action: GetEventActionType
-): EventState => {
+): GetEventState => {
   switch (action.type) {
     case GET_EVENTS_START:
       return {

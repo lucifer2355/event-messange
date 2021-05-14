@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 
-import { EventState } from "../../../types";
+import { GetEventState } from "../../../types";
 
 export const GET_EVENTS_START = "GET_EVENTS_START";
 export const GET_EVENTS_COMPLETE = "GET_EVENT_COMPLETE";
@@ -18,7 +18,7 @@ export type GetEventActionType = GetEventsStartAction | GetEventsCompleteAction;
 
 export type GetEventDispatch<ReturnType = void> = ThunkAction<
   ReturnType,
-  EventState,
+  GetEventState,
   unknown,
   GetEventActionType
 >;

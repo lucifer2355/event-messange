@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 
-import { EventState } from "../../../types";
+import { GetEventState } from "../../../types";
 
 export interface AddEventValues {
   title: string;
@@ -39,7 +39,7 @@ export type EventActionType =
 
 export type EventDispatch<ReturnType = void> = ThunkAction<
   ReturnType,
-  EventState,
+  GetEventState,
   unknown,
   EventActionType
 >;
